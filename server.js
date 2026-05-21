@@ -1,4 +1,5 @@
 require('dotenv').config();
+const path = require('path');
 const express = require('express');
 const helmet = require('helmet');
 const rateLimit = require('express-rate-limit');
@@ -57,6 +58,7 @@ const app = express();
 app.use(helmet());
 app.use(cors());
 app.use(express.json());
+app.use(express.static(path.join(__dirname)));
 
 const limiter = rateLimit({ windowMs: 15*60*1000, max: 200 });
 app.use(limiter);
@@ -149,6 +151,10 @@ app.post('/teams/:id/stats', requireCommissioner, (req,res)=>{
   // keep simple: store stats as players/fields in DB; adapt as needed
   // Here you would update team-level stats table or players as required.
   res.json({ ok:true, message:'Implement your specific stat updates here' });
+});
+
+app.get('/', (req, res) => {
+  res.sendFile(path.join(__dirname, 'index.html'));
 });
 
 app.listen(PORT, ()=>console.log('Server running on port', PORT));
