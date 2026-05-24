@@ -6,141 +6,128 @@
 <title>HCA — Hockey Club Association</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800;900&family=Barlow:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet"/>
 <style>
-:root{--navy:#0A1628;--navy-mid:#132040;--navy-light:#1C2F55;--gold:#C9963A;--gold-light:#E8B84B;--text:#E8EDF5;--text-muted:#8A99B5;--text-dim:#5A6880;--border:rgba(255,255,255,0.07);--border-light:rgba(255,255,255,0.13);--card:rgba(255,255,255,0.04);--card-hover:rgba(255,255,255,0.07);--font-display:'Barlow Condensed',sans-serif;--font-body:'Barlow',sans-serif;}
+:root{--navy:#0F0F0F;--navy-mid:#1A1A1A;--navy-light:#252525;--gold:#FFFFFF;--gold-light:#F0F0F0;--text:#FFFFFF;--text-muted:#B8B8B8;--text-dim:#808080;--border:rgba(255,255,255,0.12);--border-light:rgba(255,255,255,0.18);--card:rgba(255,255,255,0.05);--card-hover:rgba(255,255,255,0.08);--font-display:'Montserrat',sans-serif;--font-body:'Montserrat',sans-serif;}
 *{box-sizing:border-box;margin:0;padding:0;}html{scroll-behavior:smooth;}
 body{background:var(--navy);color:var(--text);font-family:var(--font-body);font-size:15px;line-height:1.6;min-height:100vh;}
-nav{position:sticky;top:0;z-index:100;background:rgba(10,22,40,0.97);border-bottom:1px solid var(--border-light);backdrop-filter:blur(12px);display:flex;align-items:center;padding:0 1.5rem;height:60px;}
-.nav-logo{font-family:var(--font-display);font-size:1.5rem;font-weight:900;letter-spacing:0.08em;color:var(--gold);margin-right:2rem;text-transform:uppercase;cursor:pointer;white-space:nowrap;}
-.nav-logo span{color:var(--text);}
+nav{position:sticky;top:0;z-index:100;background:rgba(15,15,15,0.97);border-bottom:1px solid var(--border-light);backdrop-filter:blur(12px);display:flex;align-items:center;padding:0 1.5rem;height:60px;}
+.nav-logo{font-family:var(--font-display);font-size:1.5rem;font-weight:900;letter-spacing:0.08em;color:#fff;margin-right:2rem;text-transform:uppercase;cursor:pointer;white-space:nowrap;}
 .nav-links{display:flex;gap:0;flex:1;overflow-x:auto;}
-.nav-link{font-family:var(--font-display);font-size:0.82rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-muted);padding:0 0.85rem;height:60px;display:flex;align-items:center;cursor:pointer;border-bottom:3px solid transparent;transition:color 0.15s,border-color 0.15s;white-space:nowrap;}
-.nav-link:hover{color:var(--text);}.nav-link.active{color:var(--gold);border-bottom-color:var(--gold);}
+.nav-link{font-family:var(--font-display);font-size:0.72rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--text-muted);padding:0 0.85rem;height:60px;display:flex;align-items:center;cursor:pointer;border-bottom:3px solid transparent;transition:color 0.15s,border-color 0.15s;white-space:nowrap;}
+.nav-link:hover{color:var(--text);}.nav-link.active{color:#fff;border-bottom-color:#fff;}
 .nav-right{margin-left:auto;display:flex;align-items:center;gap:0.75rem;flex-shrink:0;padding-left:1rem;}
-.nav-live{display:flex;align-items:center;gap:6px;background:rgba(192,57,43,0.15);border:1px solid rgba(192,57,43,0.4);border-radius:4px;padding:4px 10px;font-family:var(--font-display);font-size:0.75rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#E74C3C;cursor:pointer;text-decoration:none;}
+.nav-live{display:flex;align-items:center;gap:6px;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.18);border-radius:4px;padding:4px 10px;font-family:var(--font-display);font-size:0.7rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--text);cursor:pointer;text-decoration:none;}
 .live-dot{width:7px;height:7px;background:#E74C3C;border-radius:50%;animation:pulse 1.4s infinite;}
+.offline .live-dot{background:#808080;animation:none;}
 @keyframes pulse{0%,100%{opacity:1;}50%{opacity:0.3;}}
-.nav-admin{font-family:var(--font-display);font-size:0.75rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--text-muted);border:1px solid var(--border-light);padding:4px 12px;border-radius:4px;cursor:pointer;transition:all 0.15s;}
-.nav-admin:hover{color:var(--text);border-color:var(--text-muted);}
 .page{display:none;animation:fadeIn 0.2s ease;}.page.active{display:block;}
 @keyframes fadeIn{from{opacity:0;transform:translateY(6px);}to{opacity:1;transform:translateY(0);}}
 .page-hero{padding:2.5rem 2rem 1.5rem;border-bottom:1px solid var(--border);}
-.page-hero-label{font-family:var(--font-display);font-size:0.7rem;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);margin-bottom:0.4rem;}
+.page-hero-label{font-family:var(--font-display);font-size:0.65rem;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:var(--text-muted);margin-bottom:0.4rem;}
 .page-hero-title{font-family:var(--font-display);font-size:2.8rem;font-weight:900;text-transform:uppercase;letter-spacing:0.04em;line-height:1;color:var(--text);}
 .page-hero-sub{color:var(--text-muted);margin-top:0.4rem;font-size:0.88rem;font-weight:300;}
-.home-hero{position:relative;padding:4.5rem 2rem 3.5rem;text-align:center;overflow:hidden;}
-.home-hero::before{content:'HCA';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-family:var(--font-display);font-size:20rem;font-weight:900;color:rgba(255,255,255,0.018);letter-spacing:-0.05em;pointer-events:none;white-space:nowrap;}
-.home-season-badge{display:inline-block;font-family:var(--font-display);font-size:0.7rem;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);border:1px solid rgba(201,150,58,0.4);padding:5px 14px;border-radius:3px;margin-bottom:1.25rem;}
+.home-hero{position:relative;padding:4.5rem 2rem 3.5rem;text-align:center;overflow:hidden;border-bottom:1px solid var(--border);}
+.home-hero::before{content:'HCA';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-family:var(--font-display);font-size:18rem;font-weight:900;color:rgba(255,255,255,0.03);letter-spacing:0.2em;pointer-events:none;white-space:nowrap;}
+.home-season-badge{display:inline-block;font-family:var(--font-display);font-size:0.65rem;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:var(--text-muted);border:1px solid rgba(255,255,255,0.2);padding:5px 14px;border-radius:3px;margin-bottom:1.25rem;}
 .home-title{font-family:var(--font-display);font-size:4.5rem;font-weight:900;text-transform:uppercase;letter-spacing:0.06em;line-height:0.9;color:var(--text);margin-bottom:0.5rem;}
-.home-title span{color:var(--gold);}
-.home-subtitle{font-size:1rem;color:var(--text-muted);font-weight:300;margin-bottom:2rem;letter-spacing:0.04em;}
+.home-subtitle{font-size:0.9rem;color:var(--text-muted);font-weight:300;margin-bottom:2rem;letter-spacing:0.04em;}
 .home-ctas{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;}
-.btn-primary{font-family:var(--font-display);font-size:0.8rem;font-weight:800;letter-spacing:0.12em;text-transform:uppercase;background:var(--gold);color:var(--navy);border:none;padding:11px 28px;border-radius:4px;cursor:pointer;transition:background 0.15s;}
-.btn-primary:hover{background:var(--gold-light);}
-.btn-secondary{font-family:var(--font-display);font-size:0.8rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;background:transparent;color:var(--text);border:1px solid var(--border-light);padding:11px 28px;border-radius:4px;cursor:pointer;transition:all 0.15s;text-decoration:none;display:inline-block;}
+.btn-primary{font-family:var(--font-display);font-size:0.72rem;font-weight:800;letter-spacing:0.12em;text-transform:uppercase;background:#fff;color:#000;border:none;padding:11px 28px;border-radius:4px;cursor:pointer;transition:opacity 0.15s;}
+.btn-primary:hover{opacity:0.85;}
+.btn-secondary{font-family:var(--font-display);font-size:0.72rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;background:transparent;color:var(--text);border:1px solid var(--border-light);padding:11px 28px;border-radius:4px;cursor:pointer;transition:all 0.15s;text-decoration:none;display:inline-block;}
 .btn-secondary:hover{border-color:var(--text-muted);background:var(--card-hover);}
 .home-panels{display:grid;grid-template-columns:1fr 1fr 1fr;gap:1px;background:var(--border);border-top:1px solid var(--border);border-bottom:1px solid var(--border);}
 .home-panel{background:var(--navy);padding:1.75rem 2rem;cursor:pointer;transition:background 0.15s;}
 .home-panel:hover{background:var(--card);}
-.panel-label{font-family:var(--font-display);font-size:0.65rem;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);margin-bottom:0.75rem;}
+.panel-label{font-family:var(--font-display);font-size:0.6rem;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:var(--text-muted);margin-bottom:0.75rem;}
 .standings-wrap{display:grid;grid-template-columns:1fr 1fr;gap:2rem;padding:2rem;}
-.conf-title{font-family:var(--font-display);font-size:1rem;font-weight:900;text-transform:uppercase;letter-spacing:0.1em;color:var(--gold);padding-bottom:0.75rem;border-bottom:2px solid var(--gold);margin-bottom:0;}
+.conf-title{font-family:var(--font-display);font-size:0.85rem;font-weight:900;text-transform:uppercase;letter-spacing:0.1em;color:var(--text);padding-bottom:0.75rem;border-bottom:1px solid var(--border-light);margin-bottom:0;}
 .standings-table{width:100%;border-collapse:collapse;}
-.standings-table th{font-family:var(--font-display);font-size:0.62rem;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:var(--text-dim);padding:9px 7px;text-align:center;border-bottom:1px solid var(--border);}
+.standings-table th{font-family:var(--font-display);font-size:0.58rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--text-dim);padding:9px 7px;text-align:center;border-bottom:1px solid var(--border);}
 .standings-table th:first-child{text-align:left;padding-left:0;}
-.standings-table td{padding:9px 7px;text-align:center;font-size:0.85rem;color:var(--text-muted);border-bottom:1px solid var(--border);}
+.standings-table td{padding:9px 7px;text-align:center;font-size:0.82rem;color:var(--text-muted);border-bottom:1px solid var(--border);}
 .standings-table td:first-child{text-align:left;padding-left:0;}
 .standings-table tr:hover td{background:var(--card);cursor:pointer;}
 .team-cell{display:flex;align-items:center;gap:8px;}
 .team-swatch{width:4px;height:26px;border-radius:2px;flex-shrink:0;}
-.team-rank{font-family:var(--font-display);font-size:0.72rem;font-weight:700;color:var(--text-dim);width:16px;text-align:right;flex-shrink:0;}
-.team-name-cell{font-family:var(--font-display);font-size:0.88rem;font-weight:700;letter-spacing:0.03em;text-transform:uppercase;color:var(--text);}
-.team-city-cell{font-size:0.68rem;color:var(--text-dim);font-weight:400;text-transform:uppercase;letter-spacing:0.04em;}
-.pts-cell{font-weight:700;color:var(--text)!important;font-size:0.92rem!important;}
+.team-rank{font-family:var(--font-display);font-size:0.7rem;font-weight:700;color:var(--text-dim);width:16px;text-align:right;flex-shrink:0;}
+.team-name-cell{font-family:var(--font-display);font-size:0.82rem;font-weight:700;letter-spacing:0.03em;text-transform:uppercase;color:var(--text);}
+.team-city-cell{font-size:0.65rem;color:var(--text-dim);font-weight:400;text-transform:uppercase;letter-spacing:0.04em;}
+.pts-cell{font-weight:700;color:var(--text)!important;}
+.gd-pos{color:#43A047!important;font-weight:700;}
+.gd-neg{color:#E53935!important;font-weight:700;}
+.gd-zero{color:var(--text-muted)!important;}
 .teams-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);}
 .team-card{background:var(--navy);padding:1.4rem;cursor:pointer;transition:background 0.15s;border-left:3px solid transparent;}
 .team-card:hover{background:var(--card);}
-.team-card-name{font-family:var(--font-display);font-size:1.05rem;font-weight:900;text-transform:uppercase;letter-spacing:0.04em;line-height:1.1;margin-bottom:2px;}
-.team-card-city{font-size:0.72rem;color:var(--text-dim);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:0.85rem;}
+.team-card-name{font-family:var(--font-display);font-size:1rem;font-weight:900;text-transform:uppercase;letter-spacing:0.04em;line-height:1.1;margin-bottom:2px;}
+.team-card-city{font-size:0.7rem;color:var(--text-dim);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:0.85rem;}
 .team-card-stats{display:flex;gap:1rem;}
-.team-card-stat{font-size:0.72rem;color:var(--text-dim);}
-.team-card-stat strong{display:block;font-family:var(--font-display);font-size:0.95rem;font-weight:700;color:var(--text-muted);}
-.back-btn{font-family:var(--font-display);font-size:0.75rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--text-muted);cursor:pointer;margin-bottom:1.5rem;display:inline-flex;align-items:center;gap:6px;transition:color 0.15s;}
-.back-btn:hover{color:var(--gold);}
+.team-card-stat{font-size:0.7rem;color:var(--text-dim);}
+.team-card-stat strong{display:block;font-family:var(--font-display);font-size:0.9rem;font-weight:700;color:var(--text-muted);}
+.back-btn{font-family:var(--font-display);font-size:0.7rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--text-muted);cursor:pointer;margin-bottom:1.5rem;display:inline-flex;align-items:center;gap:6px;transition:color 0.15s;}
+.back-btn:hover{color:#fff;}
 .roster-hero{display:flex;align-items:flex-end;gap:1.5rem;margin-bottom:2rem;padding-bottom:1.5rem;border-bottom:1px solid var(--border);}
-.roster-logo{width:72px;height:72px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-family:var(--font-display);font-size:1.8rem;font-weight:900;flex-shrink:0;}
-.roster-team-name{font-family:var(--font-display);font-size:2.8rem;font-weight:900;text-transform:uppercase;letter-spacing:0.04em;line-height:1;}
-.roster-team-city{font-size:0.82rem;color:var(--text-dim);text-transform:uppercase;letter-spacing:0.1em;}
+.roster-logo{width:72px;height:72px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-family:var(--font-display);font-size:1.6rem;font-weight:900;flex-shrink:0;}
+.roster-team-name{font-family:var(--font-display);font-size:2.6rem;font-weight:900;text-transform:uppercase;letter-spacing:0.04em;line-height:1;}
+.roster-team-city{font-size:0.78rem;color:var(--text-dim);text-transform:uppercase;letter-spacing:0.1em;}
 .roster-meta{display:flex;gap:2rem;margin-top:0.4rem;flex-wrap:wrap;}
-.roster-meta-item{font-size:0.78rem;}
-.roster-meta-item strong{color:var(--gold);font-weight:600;}
-.lines-title{font-family:var(--font-display);font-size:0.68rem;font-weight:800;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);margin-bottom:0.85rem;padding-bottom:0.4rem;border-bottom:1px solid var(--border);}
-.line-label{font-family:var(--font-display);font-size:0.62rem;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:var(--text-dim);margin-bottom:0.4rem;}
-.line-player{padding:5px 9px;border-left:2px solid var(--border-light);margin-bottom:3px;font-size:0.82rem;color:var(--text-muted);}
-.line-player strong{display:block;font-weight:600;font-size:0.85rem;color:var(--text);}
+.roster-meta-item{font-size:0.75rem;color:var(--text-muted);}
+.lines-title{font-family:var(--font-display);font-size:0.6rem;font-weight:800;letter-spacing:0.2em;text-transform:uppercase;color:var(--text-muted);margin-bottom:0.85rem;padding-bottom:0.4rem;border-bottom:1px solid var(--border);}
+.line-label{font-family:var(--font-display);font-size:0.58rem;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:var(--text-dim);margin-bottom:0.4rem;}
+.line-player{padding:5px 9px;border-left:2px solid var(--border-light);margin-bottom:3px;font-size:0.8rem;color:var(--text-muted);}
+.line-player strong{display:block;font-weight:600;font-size:0.82rem;color:var(--text);}
+.line-player span{font-size:0.65rem;color:var(--text-dim);}
 .roster-table{width:100%;border-collapse:collapse;}
-.roster-table th{font-family:var(--font-display);font-size:0.62rem;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:var(--text-dim);padding:8px 10px;text-align:left;border-bottom:1px solid var(--border);}
+.roster-table th{font-family:var(--font-display);font-size:0.58rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--text-dim);padding:8px 10px;text-align:left;border-bottom:1px solid var(--border);}
 .roster-table th.center,.roster-table td.center{text-align:center;}
-.roster-table td{padding:8px 10px;font-size:0.85rem;color:var(--text-muted);border-bottom:1px solid var(--border);}
+.roster-table td{padding:8px 10px;font-size:0.82rem;color:var(--text-muted);border-bottom:1px solid var(--border);}
 .roster-table tr:hover td{background:var(--card);}
 .player-name{font-weight:600;color:var(--text)!important;}
-.pos-badge{font-family:var(--font-display);font-size:0.62rem;font-weight:800;letter-spacing:0.08em;padding:2px 6px;border-radius:3px;background:var(--card);border:1px solid var(--border-light);color:var(--text-muted);}
+.pos-badge{font-family:var(--font-display);font-size:0.58rem;font-weight:800;letter-spacing:0.08em;padding:2px 6px;border-radius:3px;background:var(--card);border:1px solid var(--border-light);color:var(--text-muted);}
 .ovr-cell{font-family:var(--font-display);font-weight:700;color:var(--text)!important;}
 .news-wrap{display:grid;grid-template-columns:2fr 1fr;gap:2rem;padding:2rem;}
 .news-card{background:var(--card);border:1px solid var(--border);border-radius:6px;padding:1.4rem;margin-bottom:0.85rem;cursor:pointer;transition:border-color 0.15s,background 0.15s;}
 .news-card:hover{border-color:var(--border-light);background:var(--card-hover);}
-.news-card-tag{font-family:var(--font-display);font-size:0.65rem;font-weight:800;letter-spacing:0.15em;text-transform:uppercase;color:var(--gold);margin-bottom:0.4rem;}
-.news-card-title{font-family:var(--font-display);font-size:1.15rem;font-weight:800;text-transform:uppercase;letter-spacing:0.02em;line-height:1.2;color:var(--text);margin-bottom:0.4rem;}
-.news-card-body{font-size:0.83rem;color:var(--text-muted);line-height:1.6;margin-bottom:0.6rem;}
-.news-card-date{font-size:0.72rem;color:var(--text-dim);}
+.news-card-tag{font-family:var(--font-display);font-size:0.6rem;font-weight:800;letter-spacing:0.15em;text-transform:uppercase;color:var(--text-muted);margin-bottom:0.4rem;}
+.news-card-title{font-family:var(--font-display);font-size:1.1rem;font-weight:800;text-transform:uppercase;letter-spacing:0.02em;line-height:1.2;color:var(--text);margin-bottom:0.4rem;}
+.news-card-body{font-size:0.8rem;color:var(--text-muted);line-height:1.6;margin-bottom:0.6rem;}
+.news-card-date{font-size:0.7rem;color:var(--text-dim);}
 .trades-wrap{padding:2rem;}
-.trade-card{background:var(--card);border:1px solid var(--border);border-radius:6px;padding:1.2rem 1.4rem;margin-bottom:0.85rem;}
-.trade-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:0.85rem;}
-.trade-date{font-family:var(--font-display);font-size:0.65rem;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:var(--text-dim);}
-.trade-tag{font-family:var(--font-display);font-size:0.65rem;font-weight:800;letter-spacing:0.1em;text-transform:uppercase;padding:3px 10px;border-radius:3px;background:rgba(201,150,58,0.12);border:1px solid rgba(201,150,58,0.3);color:var(--gold);}
 .empty-state{background:var(--card);border:1px solid var(--border);border-radius:6px;padding:2.5rem;text-align:center;color:var(--text-dim);margin:2rem;}
-.empty-state-title{font-family:var(--font-display);font-size:1.1rem;font-weight:800;text-transform:uppercase;letter-spacing:0.04em;margin-bottom:0.4rem;color:var(--text-muted);}
-.admin-login{max-width:380px;margin:3rem auto;background:var(--card);border:1px solid var(--border);border-radius:8px;padding:2.5rem;}
-.form-label{display:block;font-family:var(--font-display);font-size:0.65rem;font-weight:800;letter-spacing:0.15em;text-transform:uppercase;color:var(--text-dim);margin-bottom:0.4rem;}
-.form-input{width:100%;background:rgba(255,255,255,0.05);border:1px solid var(--border-light);border-radius:4px;padding:10px 14px;font-family:var(--font-body);font-size:0.9rem;color:var(--text);outline:none;transition:border-color 0.15s;margin-bottom:1.1rem;}
-.form-input:focus{border-color:var(--gold);}
-.admin-panel-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;}
-.admin-panel-card{background:var(--card);border:1px solid var(--border);border-radius:6px;padding:1.2rem;cursor:pointer;transition:border-color 0.15s,background 0.15s;}
-.admin-panel-card:hover{border-color:var(--gold);background:var(--card-hover);}
-.admin-panel-icon{font-size:1.4rem;margin-bottom:0.4rem;}
-.admin-panel-title{font-family:var(--font-display);font-size:0.88rem;font-weight:800;text-transform:uppercase;letter-spacing:0.04em;margin-bottom:0.2rem;}
-.admin-panel-desc{font-size:0.75rem;color:var(--text-dim);}
+.empty-state-title{font-family:var(--font-display);font-size:1rem;font-weight:800;text-transform:uppercase;letter-spacing:0.04em;margin-bottom:0.4rem;color:var(--text-muted);}
 footer{border-top:1px solid var(--border);padding:1.75rem 2rem;display:flex;align-items:center;justify-content:space-between;margin-top:4rem;}
-.footer-logo{font-family:var(--font-display);font-size:1rem;font-weight:900;letter-spacing:0.1em;text-transform:uppercase;color:var(--gold);}
-.footer-text{font-size:0.72rem;color:var(--text-dim);}
-@media(max-width:1000px){.standings-wrap,.home-panels{grid-template-columns:1fr;}.teams-grid{grid-template-columns:repeat(2,1fr);}.news-wrap,.admin-panel-grid{grid-template-columns:1fr;}}
+.footer-logo{font-family:var(--font-display);font-size:0.9rem;font-weight:900;letter-spacing:0.1em;text-transform:uppercase;color:#fff;}
+.footer-text{font-size:0.7rem;color:var(--text-dim);}
+@media(max-width:1000px){.standings-wrap,.home-panels{grid-template-columns:1fr;}.teams-grid{grid-template-columns:repeat(2,1fr);}.news-wrap{grid-template-columns:1fr;}}
 </style>
 </head>
 <body>
+
 <nav>
-  <div class="nav-logo" onclick="showPage('home')">HCA<span>.</span></div>
+  <div class="nav-logo" onclick="showPage('home')">HCA.</div>
   <div class="nav-links">
     <div class="nav-link active" onclick="showPage('home')" id="nav-home">Home</div>
     <div class="nav-link" onclick="showPage('standings')" id="nav-standings">Standings</div>
+    <div class="nav-link" onclick="showPage('stats');renderStats()" id="nav-stats">Stats</div>
     <div class="nav-link" onclick="showPage('rosters');showTeamsList()" id="nav-rosters">Rosters</div>
     <div class="nav-link" onclick="showPage('trades')" id="nav-trades">Trades</div>
     <div class="nav-link" onclick="showPage('news')" id="nav-news">News</div>
   </div>
   <div class="nav-right">
-    <a class="nav-live" href="https://www.twitch.tv/tml_ttv" target="_blank"><div class="live-dot"></div>Watch Live</a>
-    <div class="nav-admin" onclick="showPage('admin')">Commissioner</div>
+    <a class="nav-live offline" href="https://www.youtube.com/@HCANetwork" target="_blank"><div class="live-dot"></div>Offline</a>
   </div>
 </nav>
 
 <div class="page active" id="page-home">
   <div class="home-hero">
-    <div class="home-season-badge">Season 1 — Pre-Season</div>
-    <div class="home-title">Hockey Club<br><span>Association</span></div>
-    <div class="home-subtitle">18 Teams &middot; 2 Conferences &middot; 1 Champion &middot; All games live on Twitch</div>
+    <div class="home-season-badge">Season 14 — Regular Season</div>
+    <div class="home-title">Hockey Club<br>Association</div>
+    <div class="home-subtitle">18 Teams &middot; 2 Conferences &middot; 1 Champion &middot; Live on YouTube</div>
     <div class="home-ctas">
       <button class="btn-primary" onclick="showPage('standings')">View Standings</button>
-      <a class="btn-secondary" href="https://www.twitch.tv/tml_ttv" target="_blank">Watch on Twitch</a>
+      <a class="btn-secondary" href="https://www.youtube.com/@HCANetwork" target="_blank">Watch on YouTube</a>
       <button class="btn-secondary" onclick="showPage('rosters');showTeamsList()">All Rosters</button>
     </div>
   </div>
@@ -153,31 +140,40 @@ footer{border-top:1px solid var(--border);padding:1.75rem 2rem;display:flex;alig
       <div class="panel-label">Western Conference</div>
       <div id="home-west-top" style="display:flex;flex-direction:column;gap:6px;"></div>
     </div>
-    <div class="home-panel" onclick="window.open('https://www.twitch.tv/tml_ttv','_blank')">
-      <div class="panel-label">Live on Twitch</div>
-      <div style="font-family:var(--font-display);font-size:1.05rem;font-weight:800;text-transform:uppercase;letter-spacing:0.03em;color:var(--text);margin-bottom:0.4rem;">twitch.tv/tml_ttv</div>
-      <div style="font-size:0.8rem;color:var(--text-dim);">All HCA games streamed live &mdash; CPU vs CPU in NHL26</div>
+    <div class="home-panel">
+      <div class="panel-label">Live Broadcasts</div>
+      <div style="font-family:var(--font-display);font-size:0.9rem;font-weight:800;text-transform:uppercase;letter-spacing:0.03em;color:var(--text);margin-bottom:0.4rem;">YouTube: @HCANetwork</div>
+      <div style="font-size:0.78rem;color:var(--text-dim);">All HCA games streamed live — CPU vs CPU in NHL26. <a href="https://www.youtube.com/@HCANetwork" target="_blank" style="color:var(--text);text-decoration:underline;">Open channel</a></div>
     </div>
   </div>
   <div style="padding:2rem;">
-    <div style="font-family:var(--font-display);font-size:0.65rem;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);margin-bottom:1rem;">All 18 Franchises</div>
+    <div style="font-family:var(--font-display);font-size:0.6rem;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:var(--text-muted);margin-bottom:1rem;">All 18 Franchises</div>
     <div class="teams-grid" id="home-teams-grid"></div>
   </div>
 </div>
 
 <div class="page" id="page-standings">
   <div class="page-hero">
-    <div class="page-hero-label">Season 1</div>
+    <div class="page-hero-label">Season 14</div>
     <div class="page-hero-title">Standings</div>
-    <div class="page-hero-sub">Season has not yet begun &mdash; all records 0-0-0</div>
+    <div class="page-hero-sub">Week 1 complete — 9 games played</div>
   </div>
   <div class="standings-wrap" id="standings-content"></div>
+</div>
+
+<div class="page" id="page-stats">
+  <div class="page-hero">
+    <div class="page-hero-label">Season 14</div>
+    <div class="page-hero-title">Player Stats</div>
+    <div class="page-hero-sub">Week 1 stats — stacked team results</div>
+  </div>
+  <div id="stats-content" style="padding:2rem;display:grid;gap:1.75rem;"></div>
 </div>
 
 <div class="page" id="page-rosters">
   <div id="rosters-teams-view">
     <div class="page-hero">
-      <div class="page-hero-label">2025&ndash;26 Season</div>
+      <div class="page-hero-label">Season 14</div>
       <div class="page-hero-title">Teams &amp; Rosters</div>
       <div class="page-hero-sub">Select a team to view their full roster and lines</div>
     </div>
@@ -190,183 +186,830 @@ footer{border-top:1px solid var(--border);padding:1.75rem 2rem;display:flex;alig
   <div class="page-hero">
     <div class="page-hero-label">Transaction Log</div>
     <div class="page-hero-title">Trade Tracker</div>
-    <div class="page-hero-sub">All trades and transactions &mdash; official and verified by the HCA commissioner group</div>
+    <div class="page-hero-sub">All trades and transactions — official and verified by the HCA commissioner group</div>
   </div>
   <div class="trades-wrap">
-    <div class="empty-state">
-      <div class="empty-state-title">No Transactions Yet</div>
-      <div style="font-size:0.85rem;">All trades and signings will appear here once the season begins.</div>
+    <div class="news-card">
+      <div class="news-card-tag">Trade</div>
+      <div class="news-card-title">Alberta acquires Victor Hedman, Buffalo acquires Dmitry Simashev + S16 pick</div>
+      <div class="news-card-body">Season 14 trade: Alberta receives Victor Hedman from Buffalo. In return, Buffalo acquires Dmitry Simashev and Alberta's S16 draft pick.</div>
+      <div class="news-card-date">Season 14</div>
+    </div>
+    <div class="news-card">
+      <div class="news-card-tag">Trade</div>
+      <div class="news-card-title">Buffalo acquires Michael Misa, Philadelphia Liberty acquires Sam Bennett</div>
+      <div class="news-card-body">Season 14 trade: Buffalo receives Michael Misa from Philadelphia Liberty, while Philadelphia acquires Sam Bennett from Buffalo.</div>
+      <div class="news-card-date">Season 14</div>
     </div>
   </div>
 </div>
 
 <div class="page" id="page-news">
   <div class="page-hero">
-    <div class="page-hero-label">Commissioner's Office</div>
-    <div class="page-hero-title">League News</div>
-  </div>
-  <div class="news-wrap">
     <div>
       <div class="news-card">
         <div class="news-card-tag">Commissioner Announcement</div>
-        <div class="news-card-title">Season 1 of the HCA is Here</div>
-        <div class="news-card-body">The Hockey Club Association officially launches with 18 franchises across two conferences. All games are played CPU vs CPU in NHL26 and streamed live on Twitch at tml_ttv. Rosters are set &mdash; it's time to play hockey.</div>
-        <div class="news-card-date">2025&ndash;26 Pre-Season</div>
+        <div class="news-card-title">Season 14 of the HCA is Here</div>
+        <div class="news-card-body">The Hockey Club Association officially launches with 18 franchises across two conferences. All games are played CPU vs CPU in NHL26 and streamed on YouTube at @HCANetwork. Rosters are locked in — it's time to play hockey.</div>
+        <div class="news-card-date">2028–29 Regular Season</div>
       </div>
       <div class="news-card">
         <div class="news-card-tag">League Info</div>
         <div class="news-card-title">How the HCA Works</div>
-        <div class="news-card-body">Each franchise is owned and managed by a real GM. Trades, signings, and line changes are submitted to the commissioner group and applied in-game. Every game is streamed live on Twitch for everyone to follow along.</div>
-        <div class="news-card-date">2025&ndash;26 Pre-Season</div>
+        <div class="news-card-body">Each franchise is owned and managed by a real GM. Trades, signings, and line changes are submitted to the commissioner group and applied in-game. Every game is streamed live on YouTube for everyone to follow along.</div>
+        <div class="news-card-date">2025–26 Pre-Season</div>
       </div>
     </div>
     <div>
-      <div style="font-family:var(--font-display);font-size:0.65rem;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);margin-bottom:1rem;">Quick Links</div>
-      <div onclick="showPage('standings')" style="padding:10px 0;border-bottom:1px solid var(--border);font-family:var(--font-display);font-size:0.85rem;font-weight:700;text-transform:uppercase;letter-spacing:0.04em;color:var(--text-muted);cursor:pointer;">Standings &rarr;</div>
-      <div onclick="showPage('rosters');showTeamsList()" style="padding:10px 0;border-bottom:1px solid var(--border);font-family:var(--font-display);font-size:0.85rem;font-weight:700;text-transform:uppercase;letter-spacing:0.04em;color:var(--text-muted);cursor:pointer;">Team Rosters &rarr;</div>
-      <div onclick="showPage('trades')" style="padding:10px 0;border-bottom:1px solid var(--border);font-family:var(--font-display);font-size:0.85rem;font-weight:700;text-transform:uppercase;letter-spacing:0.04em;color:var(--text-muted);cursor:pointer;">Trade Tracker &rarr;</div>
-      <a href="https://www.twitch.tv/tml_ttv" target="_blank" style="padding:10px 0;display:block;border-bottom:1px solid var(--border);font-family:var(--font-display);font-size:0.85rem;font-weight:700;text-transform:uppercase;letter-spacing:0.04em;color:var(--text-muted);text-decoration:none;">Watch on Twitch &rarr;</a>
-    </div>
-  </div>
-</div>
-
-<div class="page" id="page-admin">
-  <div class="page-hero">
-    <div class="page-hero-label">Restricted Access</div>
-    <div class="page-hero-title">Commissioner Portal</div>
-  </div>
-  <div style="padding:2rem;">
-    <div id="admin-login-view">
-      <div class="admin-login">
-        <div style="font-family:var(--font-display);font-size:1.4rem;font-weight:900;text-transform:uppercase;letter-spacing:0.08em;margin-bottom:0.2rem;">Sign In</div>
-        <div style="font-size:0.82rem;color:var(--text-dim);margin-bottom:1.75rem;">Commissioner access only</div>
-        <label class="form-label">Username</label>
-        <input class="form-input" type="text" placeholder="commissioner"/>
-        <label class="form-label">Password</label>
-        <input class="form-input" type="password" placeholder="••••••••"/>
-        <button class="btn-primary" style="width:100%;margin-top:0.25rem;" onclick="showAdminPanel()">Sign In</button>
-      </div>
-    </div>
-    <div id="admin-panel-view" style="display:none;">
-      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:1.5rem;">
-        <div>
-          <div style="font-family:var(--font-display);font-size:0.65rem;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:var(--gold);">Welcome back</div>
-          <div style="font-family:var(--font-display);font-size:1.2rem;font-weight:800;text-transform:uppercase;letter-spacing:0.04em;">Commissioner Dashboard</div>
-        </div>
-        <button class="btn-secondary" onclick="document.getElementById('admin-login-view').style.display='block';document.getElementById('admin-panel-view').style.display='none';">Sign Out</button>
-      </div>
-      <div class="admin-panel-grid">
-        <div class="admin-panel-card"><div class="admin-panel-icon">📊</div><div class="admin-panel-title">Enter Game Score</div><div class="admin-panel-desc">Log final scores after each broadcast</div></div>
-        <div class="admin-panel-card"><div class="admin-panel-icon">👥</div><div class="admin-panel-title">Manage Rosters</div><div class="admin-panel-desc">Add, remove, or update players on any team</div></div>
-        <div class="admin-panel-card"><div class="admin-panel-icon">🔄</div><div class="admin-panel-title">Log a Trade</div><div class="admin-panel-desc">Record official trades between franchises</div></div>
-        <div class="admin-panel-card"><div class="admin-panel-icon">📋</div><div class="admin-panel-title">Edit Lines</div><div class="admin-panel-desc">Update forward lines and defensive pairings</div></div>
-        <div class="admin-panel-card"><div class="admin-panel-icon">📰</div><div class="admin-panel-title">Post Announcement</div><div class="admin-panel-desc">Publish news or commissioner statements</div></div>
-        <div class="admin-panel-card"><div class="admin-panel-icon">📅</div><div class="admin-panel-title">Schedule Games</div><div class="admin-panel-desc">Add upcoming games and stream dates</div></div>
-      </div>
+      <div style="font-family:var(--font-display);font-size:0.6rem;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:var(--text-muted);margin-bottom:1rem;">Quick Links</div>
+      <div onclick="showPage('standings')" style="padding:10px 0;border-bottom:1px solid var(--border);font-family:var(--font-display);font-size:0.8rem;font-weight:700;text-transform:uppercase;letter-spacing:0.04em;color:var(--text-muted);cursor:pointer;">Standings &rarr;</div>
+      <div onclick="showPage('rosters');showTeamsList()" style="padding:10px 0;border-bottom:1px solid var(--border);font-family:var(--font-display);font-size:0.8rem;font-weight:700;text-transform:uppercase;letter-spacing:0.04em;color:var(--text-muted);cursor:pointer;">Team Rosters &rarr;</div>
+      <div onclick="showPage('trades')" style="padding:10px 0;border-bottom:1px solid var(--border);font-family:var(--font-display);font-size:0.8rem;font-weight:700;text-transform:uppercase;letter-spacing:0.04em;color:var(--text-muted);cursor:pointer;">Trade Tracker &rarr;</div>
+      <div onclick="showPage('stats');renderStats()" style="padding:10px 0;border-bottom:1px solid var(--border);font-family:var(--font-display);font-size:0.8rem;font-weight:700;text-transform:uppercase;letter-spacing:0.04em;color:var(--text-muted);cursor:pointer;">Player Stats &rarr;</div>
+      <a href="https://www.youtube.com/@HCANetwork" target="_blank" style="padding:10px 0;display:block;border-bottom:1px solid var(--border);font-family:var(--font-display);font-size:0.8rem;font-weight:700;text-transform:uppercase;letter-spacing:0.04em;color:var(--text-muted);text-decoration:none;">Watch on YouTube &rarr;</a>
     </div>
   </div>
 </div>
 
 <footer>
-  <div class="footer-logo">HCA &mdash; Hockey Club Association</div>
-  <div class="footer-text">Season 1 &middot; All games live on <a href="https://www.twitch.tv/tml_ttv" target="_blank" style="color:var(--gold);text-decoration:none;">twitch.tv/tml_ttv</a></div>
+  <div class="footer-logo">HCA — Hockey Club Association</div>
+  <div class="footer-text">Season 14 &middot; Live on <a href="https://www.youtube.com/@HCANetwork" target="_blank" style="color:#fff;text-decoration:none;">YouTube: @HCANetwork</a></div>
 </footer>
 
 <script>
+// ── STANDINGS from images 10 & 11 ──────────────────────────────────────────
+// Eastern: Toronto(1-1-0,+7), Philadelphia(1-0-0,+1), Florida(1-1-0,0),
+//          NY Legends(0-0-1,-1), Miami(0-0-1,-1), NY Imperials(0-1-1,-4),
+//          Montreal(0-2-0,-2), Quebec(0-1-0,-2), Buffalo(0-1-0,-9)
+// Western: Seattle(2-0-0,+8), St.Louis(2-0-0,+6), Dallas(2-0-0,+5),
+//          Portland(2-0-0,+2), Alberta(1-0-0,+3), LA Magic(1-0-0,+1),
+//          Chicago(1-1-0,-3), San Francisco(0-1-0,-5), Colorado(0-2-0,-6)
+
 const TEAMS=[
-  {id:'towers',     city:'Toronto',       name:'Towers',        color:'#CC0000', conf:'East'},
-  {id:'storm',      city:'Montreal',      name:'Storm',         color:'#333333', conf:'East'},
-  {id:'voyageurs',  city:'Quebec',        name:'Voyageurs',     color:'#1B3A6B', conf:'East'},
-  {id:'legends',    city:'New York',      name:'Legends',       color:'#1D3D7F', conf:'East'},
-  {id:'bulldogs',   city:'Buffalo',       name:'Bulldogs',      color:'#F5C518', conf:'East'},
-  {id:'waves',      city:'Miami',         name:'Waves',         color:'#E91E8C', conf:'East'},
-  {id:'liberty',    city:'Philadelphia',  name:'Liberty',       color:'#008B8B', conf:'East'},
-  {id:'firebirds',  city:'Florida',       name:'Firebirds',     color:'#FF4500', conf:'East'},
-  {id:'imperials',  city:'New York',      name:'Imperials',     color:'#0038A8', conf:'East'},
-  {id:'outlaws',    city:'Alberta',       name:'Outlaws',       color:'#8B1A1A', conf:'West'},
-  {id:'stags',      city:'Seattle',       name:'Stags',         color:'#7B2FBE', conf:'West'},
-  {id:'comets',     city:'Colorado',      name:'Comets',        color:'#E65100', conf:'West'},
-  {id:'magic',      city:'Los Angeles',   name:'Magic',         color:'#6A0DAD', conf:'West'},
-  {id:'notes',      city:'St. Louis',     name:'Notes',         color:'#5BB8F5', conf:'West'},
-  {id:'ghostpirates',city:'Portland',     name:'Ghost Pirates', color:'#39FF14', conf:'West'},
-  {id:'rams',       city:'Chicago',       name:'Rams',          color:'#1A2F6B', conf:'West'},
-  {id:'longhorns',  city:'Dallas',        name:'Longhorns',     color:'#1A3A6B', conf:'West'},
-  {id:'pirates',    city:'San Francisco', name:'Pirates',       color:'#9B1515', conf:'West'},
+  {id:'towers',      city:'Toronto',       name:'Towers',        color:'#CC0000', conf:'East', ovr:92, w:1,l:1,otl:0,pts:2,gd:7},
+  {id:'storm',       city:'Montreal',      name:'Storm',         color:'#AAAAAA', conf:'East', ovr:89, w:0,l:2,otl:0,pts:0,gd:-2},
+  {id:'voyageurs',   city:'Quebec',        name:'Voyageurs',     color:'#1B3A6B', conf:'East', ovr:90, w:0,l:1,otl:0,pts:0,gd:-2},
+  {id:'legends',     city:'New York',      name:'Legends',       color:'#C9963A', conf:'East', ovr:92, w:0,l:0,otl:1,pts:1,gd:-1},
+  {id:'bulldogs',    city:'Buffalo',       name:'Bulldogs',      color:'#F5C518', conf:'East', ovr:88, w:0,l:1,otl:0,pts:0,gd:-9},
+  {id:'waves',       city:'Miami',         name:'Waves',         color:'#E91E8C', conf:'East', ovr:87, w:0,l:0,otl:1,pts:1,gd:-1},
+  {id:'liberty',     city:'Philadelphia',  name:'Liberty',       color:'#39FF99', conf:'East', ovr:91, w:1,l:0,otl:0,pts:2,gd:1},
+  {id:'firebirds',   city:'Florida',       name:'Firebirds',     color:'#FF4500', conf:'East', ovr:92, w:1,l:1,otl:0,pts:2,gd:0},
+  {id:'imperials',   city:'New York',      name:'Imperials',     color:'#0038A8', conf:'East', ovr:91, w:0,l:1,otl:1,pts:1,gd:-4},
+  {id:'outlaws',     city:'Alberta',       name:'Outlaws',       color:'#8B1A1A', conf:'West', ovr:92, w:1,l:0,otl:0,pts:2,gd:3},
+  {id:'stags',       city:'Seattle',       name:'Stags',         color:'#9B59B6', conf:'West', ovr:93, w:2,l:0,otl:0,pts:4,gd:8},
+  {id:'comets',      city:'Colorado',      name:'Comets',        color:'#E65100', conf:'West', ovr:92, w:0,l:2,otl:0,pts:0,gd:-6},
+  {id:'magic',       city:'Los Angeles',   name:'Magic',         color:'#7B2FBE', conf:'West', ovr:93, w:1,l:0,otl:0,pts:2,gd:1},
+  {id:'notes',       city:'St. Louis',     name:'Notes',         color:'#5BB8F5', conf:'West', ovr:91, w:2,l:0,otl:0,pts:4,gd:6},
+  {id:'ghostpirates',city:'Portland',      name:'Ghost Pirates', color:'#39FF14', conf:'West', ovr:88, w:2,l:0,otl:0,pts:4,gd:2},
+  {id:'rams',        city:'Chicago',       name:'Rams',          color:'#4A6FA5', conf:'West', ovr:92, w:1,l:1,otl:0,pts:2,gd:-3},
+  {id:'longhorns',   city:'Dallas',        name:'Longhorns',     color:'#1A3A6B', conf:'West', ovr:92, w:2,l:0,otl:0,pts:4,gd:5},
+  {id:'pirates',     city:'San Francisco', name:'Pirates',       color:'#9B1515', conf:'West', ovr:91, w:0,l:1,otl:0,pts:0,gd:-5},
 ];
 
 const ROSTERS={
   towers:{
-    lines:[{label:'Line 1',players:['D. Nils','C. Bedard','P. Martone']},{label:'Line 2',players:['J. Robertson','S. Aho','S. Stamkos']},{label:'Line 3',players:['V. Arvidsson','M. Granlund','N. Brown']},{label:'Line 4',players:['C. Perfetti',"R. O'Reilly",'R. Rakell']}],
-    dpairs:[{label:'Pair 1',players:['J. Sanderson','G. Forsling']},{label:'Pair 2',players:['D. Orlov','R. Sandin']},{label:'Pair 3',players:['K. Revamp','M. Pettersson']}],
-    players:[{name:'D. Nils',pos:'LW',ovr:99,note:''},{name:'C. Bedard',pos:'C',ovr:94,note:''},{name:'P. Martone',pos:'RW',ovr:96,note:'99 POT'},{name:'J. Robertson',pos:'LW',ovr:90,note:''},{name:'S. Aho',pos:'C',ovr:90,note:''},{name:'S. Stamkos',pos:'C',ovr:85,note:''},{name:'V. Arvidsson',pos:'RW',ovr:84,note:''},{name:'M. Granlund',pos:'C',ovr:85,note:''},{name:'N. Brown',pos:'RW',ovr:86,note:''},{name:'C. Perfetti',pos:'C',ovr:84,note:''},{name:"R. O'Reilly",pos:'C',ovr:85,note:''},{name:'R. Rakell',pos:'RW',ovr:85,note:''},{name:'J. Sanderson',pos:'D',ovr:89,note:''},{name:'G. Forsling',pos:'D',ovr:88,note:''},{name:'D. Orlov',pos:'D',ovr:86,note:''},{name:'R. Sandin',pos:'D',ovr:85,note:''},{name:'K. Revamp',pos:'D',ovr:78,note:'86 POT'},{name:'M. Pettersson',pos:'D',ovr:85,note:''},{name:'L. Thompson',pos:'G',ovr:89,note:''},{name:'L. Dostal',pos:'G',ovr:86,note:''},{name:'J. Marino',pos:'D',ovr:84,note:'Extra'},{name:'B. McMann',pos:'LW',ovr:83,note:'Extra'}]
+    lines:[
+      {label:'Line 1',players:['Dixon Nils','Connor Bedard','Porter Martone']},
+      {label:'Line 2',players:['Jason Robertson','Evgeni Malkin','Nick Brown']},
+      {label:'Line 3',players:['Juraj Slafkovsky','Steven Stamkos','Rickard Rakell']},
+      {label:'Line 4',players:['Cole Perfetti',"Ryan O'Reilly","Viktor Arvidsson"]},
+    ],
+    dpairs:[
+      {label:'Pair 1',players:['Jake Sanderson','Gustav Forsling']},
+      {label:'Pair 2',players:['Dmitry Orlov','Rasmus Sandin']},
+      {label:'Pair 3',players:['Marcus Pettersson','Kevin Bahl']},
+    ],
+    players:[
+      // Stats from Images 4-5 (Toronto Towers, lost — Malkin 1g, Logan Thompson in net: 18SA 16S .889 2GA 2.03GAA)
+{name:'Dixon Nils',pos:'LW',ovr:99,gp:2,g:1,a:1,pts_s:2,plusminus:1,shots:3,shot_pct:0.333,ppt:'1:14',pim:0,hits:4},
+
+{name:'Connor Bedard',pos:'C',ovr:94,gp:2,g:1,a:1,pts_s:2,plusminus:0,shots:3,shot_pct:0.333,ppt:'1:50',pim:0,hits:4},
+
+{name:'Porter Martone',pos:'RW',ovr:96,gp:2,g:1,a:1,pts_s:2,plusminus:2,shots:3,shot_pct:0.333,ppt:'1:15',pim:0,hits:0},
+
+{name:'Jason Robertson',pos:'LW',ovr:90,gp:2,g:2,a:2,pts_s:4,plusminus:4,shots:3,shot_pct:0.667,ppt:'2:15',pim:0,hits:0},
+
+{name:'Evgeni Malkin',pos:'C',ovr:87,gp:2,g:1,a:0,pts_s:1,plusminus:-1,shots:1,shot_pct:1.000,ppt:'1:41',pim:0,hits:0},
+
+{name:'Nick Brown',pos:'RW',ovr:86,gp:2,g:1,a:1,pts_s:2,plusminus:3,shots:1,shot_pct:1.000,ppt:'1:07',pim:0,hits:1},
+
+{name:'Juraj Slafkovsky',pos:'LW',ovr:87,gp:2,g:1,a:1,pts_s:2,plusminus:3,shots:2,shot_pct:0.500,ppt:'1:57',pim:0,hits:2},
+
+{name:'Steven Stamkos',pos:'C',ovr:85,gp:2,g:0,a:0,pts_s:0,plusminus:0,shots:1,shot_pct:0,ppt:'1:07',pim:0,hits:0},
+
+{name:'Rickard Rakell',pos:'RW',ovr:85,gp:2,g:1,a:1,pts_s:2,plusminus:0,shots:1,shot_pct:1.000,ppt:'1:06',pim:0,hits:0},
+
+{name:'Cole Perfetti',pos:'C',ovr:84,gp:2,g:0,a:0,pts_s:0,plusminus:0,shots:0,shot_pct:0,ppt:'0:00',pim:0,hits:0},
+
+{name:"Ryan O'Reilly",pos:'C',ovr:85,gp:2,g:1,a:0,pts_s:1,plusminus:0,shots:2,shot_pct:0.500,ppt:'0:35',pim:0,hits:1},
+
+{name:'Viktor Arvidsson',pos:'RW',ovr:83,gp:2,g:0,a:0,pts_s:0,plusminus:-2,shots:0,shot_pct:0,ppt:'0:00',pim:0,hits:0},
+
+{name:'Jake Sanderson',pos:'D',ovr:89,gp:2,g:0,a:2,pts_s:2,plusminus:3,shots:3,shot_pct:0,ppt:'2:55',pim:0,hits:2},
+
+{name:'Gustav Forsling',pos:'D',ovr:88,gp:2,g:0,a:2,pts_s:2,plusminus:1,shots:3,shot_pct:0,ppt:'3:05',pim:0,hits:5},
+
+{name:'Dmitry Orlov',pos:'D',ovr:86,gp:2,g:0,a:0,pts_s:0,plusminus:0,shots:0,shot_pct:0,ppt:'0:33',pim:0,hits:0},
+
+{name:'Rasmus Sandin',pos:'D',ovr:85,gp:2,g:0,a:0,pts_s:0,plusminus:0,shots:0,shot_pct:0,ppt:'0:20',pim:0,hits:0},
+
+{name:'Marcus Pettersson',pos:'D',ovr:85,gp:2,g:0,a:0,pts_s:0,plusminus:-2,shots:0,shot_pct:0,ppt:'0:34',pim:0,hits:0},
+
+{name:'Kevin Bahl',pos:'D',ovr:84,gp:2,g:0,a:2,pts_s:2,plusminus:4,shots:0,shot_pct:0,ppt:'1:28',pim:0,hits:5},
+
+{name:'Logan Thompson',pos:'G',ovr:89,gp:2,gw:1,gaa:1.48,svp:0.938,sa:48,s:45},
+
+{name:'Lukas Dostal',pos:'G',ovr:86,gp:0,gw:0,gaa:0,svp:0,sa:0,s:0},
+    ]
   },
-  comets:{
-    lines:[{label:'Line 1',players:['Larkin','Stuzle','Guentzle']},{label:'Line 2',players:['Fiala','Cooley','Coronato']},{label:'Line 3',players:['Lehkonen','Hertl','McMichael']},{label:'Line 4',players:['Bertuzzi','Seguin','Eberle']}],
-    dpairs:[{label:'Pair 1',players:['Heiskanen','Makar']},{label:'Pair 2',players:['Hanifin','Doughty']},{label:'Pair 3',players:['Pesce','Girard']}],
-    players:[{name:'Larkin',pos:'C',ovr:88,note:''},{name:'Stuzle',pos:'C',ovr:90,note:''},{name:'Guentzle',pos:'LW',ovr:88,note:''},{name:'Fiala',pos:'LW',ovr:87,note:''},{name:'Cooley',pos:'C',ovr:88,note:''},{name:'Coronato',pos:'RW',ovr:87,note:''},{name:'Lehkonen',pos:'LW',ovr:85,note:''},{name:'Hertl',pos:'C',ovr:86,note:''},{name:'McMichael',pos:'C',ovr:86,note:''},{name:'Bertuzzi',pos:'LW',ovr:82,note:''},{name:'Seguin',pos:'C',ovr:86,note:''},{name:'Eberle',pos:'RW',ovr:85,note:''},{name:'Heiskanen',pos:'D',ovr:90,note:''},{name:'Makar',pos:'D',ovr:97,note:''},{name:'Hanifin',pos:'D',ovr:87,note:''},{name:'Doughty',pos:'D',ovr:86,note:''},{name:'Pesce',pos:'D',ovr:86,note:''},{name:'Girard',pos:'D',ovr:86,note:''},{name:'Oettinger',pos:'G',ovr:93,note:''},{name:'Gibson',pos:'G',ovr:84,note:''}]
-  },
-  bulldogs:{
-    lines:[{label:'Line 1',players:['Woodman','Rant','Snuggerud']},{label:'Line 2',players:['Brindley','Dvorsky','Fiala']},{label:'Line 3',players:['Ekberg','Bennett','Nichushkin']},{label:'Line 4',players:['Burakovsky','Lowry','Kane']}],
-    dpairs:[{label:'Pair 1',players:['Hedman','Bouchard']},{label:'Pair 2',players:['Morrissey','Moser']},{label:'Pair 3',players:['Malinski','Schmidt']}],
-    players:[{name:'Woodman',pos:'LW',ovr:82,note:'92 POT'},{name:'Rant',pos:'C',ovr:92,note:''},{name:'Snuggerud',pos:'RW',ovr:82,note:'89 POT'},{name:'Brindley',pos:'C',ovr:78,note:'87 POT'},{name:'Dvorsky',pos:'C',ovr:81,note:'88 POT'},{name:'Fiala',pos:'LW',ovr:87,note:''},{name:'Ekberg',pos:'LW',ovr:83,note:'86 POT'},{name:'Bennett',pos:'C',ovr:86,note:''},{name:'Nichushkin',pos:'RW',ovr:85,note:''},{name:'Burakovsky',pos:'LW',ovr:84,note:''},{name:'Lowry',pos:'C',ovr:84,note:''},{name:'Kane',pos:'LW',ovr:84,note:''},{name:'Hedman',pos:'D',ovr:92,note:''},{name:'Bouchard',pos:'D',ovr:90,note:''},{name:'Morrissey',pos:'D',ovr:90,note:''},{name:'Moser',pos:'D',ovr:84,note:''},{name:'Malinski',pos:'D',ovr:0,note:'OVR TBC'},{name:'Schmidt',pos:'D',ovr:83,note:''},{name:'Bob',pos:'G',ovr:87,note:''},{name:'George',pos:'G',ovr:86,note:''},{name:'Seppanen',pos:'C',ovr:83,note:'Extra'},{name:'McQueen',pos:'RW',ovr:83,note:'Extra'},{name:'Greig',pos:'C',ovr:83,note:'Extra'}]
-  },
-  imperials:{
-    lines:[{label:'Line 1',players:['Tkachuk','Fantilli','Cozens']},{label:'Line 2',players:['Hintz','Hughes','Vilardi']},{label:'Line 3',players:['DeBrusk','Rossi','Doan']},{label:'Line 4',players:['Sherwood','Chytil','Zetterlund']}],
-    dpairs:[{label:'Pair 1',players:['Brodin','Karlsson']},{label:'Pair 2',players:['Siegenthaler','Hronek']},{label:'Pair 3',players:['Miller','Lohrei']}],
-    players:[{name:'Tkachuk',pos:'LW',ovr:0,note:''},{name:'Fantilli',pos:'C',ovr:0,note:''},{name:'Cozens',pos:'C',ovr:0,note:''},{name:'Hintz',pos:'C',ovr:0,note:''},{name:'Hughes',pos:'C',ovr:0,note:''},{name:'Vilardi',pos:'C',ovr:0,note:''},{name:'DeBrusk',pos:'LW',ovr:0,note:''},{name:'Rossi',pos:'C',ovr:0,note:''},{name:'Doan',pos:'RW',ovr:0,note:''},{name:'Sherwood',pos:'RW',ovr:0,note:''},{name:'Chytil',pos:'C',ovr:0,note:''},{name:'Zetterlund',pos:'RW',ovr:0,note:''},{name:'Brodin',pos:'D',ovr:0,note:''},{name:'Karlsson',pos:'D',ovr:0,note:''},{name:'Siegenthaler',pos:'D',ovr:0,note:''},{name:'Hronek',pos:'D',ovr:0,note:''},{name:'Miller',pos:'D',ovr:0,note:''},{name:'Lohrei',pos:'D',ovr:0,note:''},{name:'Wolf',pos:'G',ovr:0,note:''},{name:'Askarov',pos:'G',ovr:0,note:''}]
-  },
-  stags:{
-    lines:[{label:'Line 1',players:['Spence','MacKinnon','Point']},{label:'Line 2',players:['Terry','Eichel','Tuch']},{label:'Line 3',players:['Tolvanen','Barzal','Kindel']},{label:'Line 4',players:['Kreider','Zacha','Evangelista']}],
-    dpairs:[{label:'Pair 1',players:['Hughes','Levshunov']},{label:'Pair 2',players:['Theodore','Severson']},{label:'Pair 3',players:['Cernak','Dillon']}],
-    players:[{name:'Spence',pos:'LW',ovr:0,note:''},{name:'MacKinnon',pos:'C',ovr:0,note:''},{name:'Point',pos:'C',ovr:0,note:''},{name:'Terry',pos:'RW',ovr:0,note:''},{name:'Eichel',pos:'C',ovr:0,note:''},{name:'Tuch',pos:'LW',ovr:0,note:''},{name:'Tolvanen',pos:'RW',ovr:0,note:''},{name:'Barzal',pos:'C',ovr:0,note:''},{name:'Kindel',pos:'RW',ovr:0,note:''},{name:'Kreider',pos:'LW',ovr:0,note:''},{name:'Zacha',pos:'C',ovr:0,note:''},{name:'Evangelista',pos:'LW',ovr:0,note:''},{name:'Hughes',pos:'D',ovr:0,note:''},{name:'Levshunov',pos:'D',ovr:0,note:''},{name:'Theodore',pos:'D',ovr:0,note:''},{name:'Severson',pos:'D',ovr:0,note:''},{name:'Cernak',pos:'D',ovr:0,note:''},{name:'Dillon',pos:'D',ovr:0,note:''},{name:'Andersen',pos:'G',ovr:0,note:''},{name:'Fowler',pos:'D',ovr:0,note:'Extra'},{name:'Meuller',pos:'RW',ovr:0,note:'Scratched · 86 POT'},{name:'Carbonneau',pos:'C',ovr:0,note:'Scratched · 86 POT'}]
-  },
-  pirates:{
-    lines:[{label:'Line 1',players:['Kucherov','Pettersson','Mustard']},{label:'Line 2',players:['Stone','Nazar','Benson']},{label:'Line 3',players:['Kyrou','McCann','Voronkov']},{label:'Line 4',players:['Kane','Karlsson','Toffoli']}],
-    dpairs:[{label:'Pair 1',players:['Dahlin','Dobson']},{label:'Pair 2',players:['Schneider','Raddysh']},{label:'Pair 3',players:['McCarthy','Zadorov']}],
-    players:[{name:'Kucherov',pos:'RW',ovr:95,note:''},{name:'Pettersson',pos:'C',ovr:89,note:''},{name:'Mustard',pos:'LW',ovr:90,note:''},{name:'Stone',pos:'RW',ovr:88,note:''},{name:'Nazar',pos:'C',ovr:84,note:'89 POT'},{name:'Benson',pos:'LW',ovr:87,note:''},{name:'Kyrou',pos:'RW',ovr:86,note:''},{name:'McCann',pos:'C',ovr:86,note:''},{name:'Voronkov',pos:'LW',ovr:85,note:''},{name:'Kane',pos:'LW',ovr:84,note:''},{name:'Karlsson',pos:'C',ovr:84,note:''},{name:'Toffoli',pos:'RW',ovr:85,note:''},{name:'Kadri',pos:'C',ovr:84,note:'Extra'},{name:'Dahlin',pos:'D',ovr:93,note:''},{name:'Dobson',pos:'D',ovr:88,note:''},{name:'Schneider',pos:'D',ovr:86,note:''},{name:'Raddysh',pos:'D',ovr:86,note:''},{name:'McCarthy',pos:'D',ovr:85,note:''},{name:'Zadorov',pos:'D',ovr:84,note:''},{name:'Ferraro',pos:'D',ovr:83,note:'Extra'},{name:'Daigle',pos:'G',ovr:88,note:''},{name:'Ullmark',pos:'G',ovr:85,note:''}]
-  },
-  notes:{
-    lines:[{label:'Line 1',players:['Michkov','Thomas','Reinhart']},{label:'Line 2',players:['Frondell','Tavares','Marchenko']},{label:'Line 3',players:['Eklund','Zibanejad','Johnson']},{label:'Line 4',players:['Danault','Stephenson','Cowan']}],
-    dpairs:[{label:'Pair 1',players:['Dunn','Beck']},{label:'Pair 2',players:['Ekblad','Reilly']},{label:'Pair 3',players:['Chabot','Provorov']}],
-    players:[{name:'Michkov',pos:'RW',ovr:93,note:''},{name:'Thomas',pos:'LW',ovr:91,note:''},{name:'Reinhart',pos:'C',ovr:92,note:''},{name:'Frondell',pos:'LW',ovr:89,note:''},{name:'Tavares',pos:'C',ovr:87,note:''},{name:'Marchenko',pos:'RW',ovr:86,note:''},{name:'Eklund',pos:'LW',ovr:86,note:''},{name:'Zibanejad',pos:'C',ovr:86,note:''},{name:'Johnson',pos:'RW',ovr:86,note:''},{name:'Danault',pos:'C',ovr:84,note:''},{name:'Stephenson',pos:'C',ovr:84,note:''},{name:'Cowan',pos:'C',ovr:80,note:''},{name:'York',pos:'D',ovr:84,note:'Extra'},{name:'Dunn',pos:'D',ovr:87,note:''},{name:'Beck',pos:'D',ovr:89,note:''},{name:'Ekblad',pos:'D',ovr:86,note:''},{name:'Reilly',pos:'D',ovr:87,note:''},{name:'Chabot',pos:'D',ovr:86,note:''},{name:'Provorov',pos:'D',ovr:85,note:''},{name:'Saros',pos:'G',ovr:88,note:''},{name:'Kuemper',pos:'G',ovr:85,note:''}]
-  },
-  legends:{
-    lines:[{label:'Line 1',players:['Pastrnak','Crosby','Lambert']},{label:'Line 2',players:['Nylander','Suzuki','Scheifele']},{label:'Line 3',players:['Sennecke','Horvat','Poitras']},{label:'Line 4',players:['Lee','Dach','Monahan']}],
-    dpairs:[{label:'Pair 1',players:['Dupont','Sergachev']},{label:'Pair 2',players:['Jones','Casey']},{label:'Pair 3',players:['Lindell','Jarnkrok']}],
-    players:[{name:'Pastrnak',pos:'RW',ovr:95,note:''},{name:'Crosby',pos:'C',ovr:92,note:''},{name:'Lambert',pos:'LW',ovr:82,note:'91 POT'},{name:'Nylander',pos:'RW',ovr:90,note:''},{name:'Suzuki',pos:'C',ovr:91,note:''},{name:'Scheifele',pos:'C',ovr:91,note:''},{name:'Sennecke',pos:'RW',ovr:90,note:''},{name:'Horvat',pos:'C',ovr:88,note:''},{name:'Poitras',pos:'C',ovr:86,note:''},{name:'Lee',pos:'LW',ovr:84,note:''},{name:'Dach',pos:'C',ovr:83,note:''},{name:'Monahan',pos:'C',ovr:84,note:''},{name:'Dupont',pos:'D',ovr:91,note:''},{name:'Sergachev',pos:'D',ovr:88,note:''},{name:'Jones',pos:'D',ovr:87,note:''},{name:'Casey',pos:'D',ovr:85,note:'87 POT'},{name:'Lindell',pos:'D',ovr:86,note:''},{name:'Jarnkrok',pos:'D',ovr:85,note:''},{name:'Samuelsson',pos:'D',ovr:84,note:''},{name:'Markstrom',pos:'G',ovr:88,note:''},{name:'Bussi',pos:'G',ovr:85,note:''}]
-  },
-  liberty:{
-    lines:[{label:'Line 1',players:['Ehlers','McDavid','Batherson']},{label:'Line 2',players:['Verhaeghe','Keller','Rust']},{label:'Line 3',players:['Neighbors','Stankoven','Ovechkin']},{label:'Line 4',players:['Moore','Cates','Backlund']}],
-    dpairs:[{label:'Pair 1',players:['Chychrun','Sanheim']},{label:'Pair 2',players:['Pionk','Carlo']},{label:'Pair 3',players:['McCabe','Walker']}],
-    players:[{name:'McDavid',pos:'C',ovr:98,note:''},{name:'Ehlers',pos:'LW',ovr:86,note:''},{name:'Batherson',pos:'RW',ovr:87,note:''},{name:'Keller',pos:'C',ovr:90,note:''},{name:'Verhaeghe',pos:'LW',ovr:86,note:''},{name:'Rust',pos:'RW',ovr:86,note:''},{name:'Ovechkin',pos:'LW',ovr:86,note:''},{name:'Neighbors',pos:'LW',ovr:84,note:''},{name:'Stankoven',pos:'C',ovr:86,note:''},{name:'Moore',pos:'C',ovr:84,note:''},{name:'Cates',pos:'C',ovr:83,note:''},{name:'Backlund',pos:'C',ovr:84,note:''},{name:'Chychrun',pos:'D',ovr:88,note:''},{name:'Sanheim',pos:'D',ovr:86,note:'PLA'},{name:'Pionk',pos:'D',ovr:85,note:''},{name:'Carlo',pos:'D',ovr:85,note:''},{name:'McCabe',pos:'D',ovr:85,note:''},{name:'Walker',pos:'D',ovr:84,note:''},{name:'Trouba',pos:'D',ovr:83,note:'Extra'},{name:'Shesterkin',pos:'G',ovr:90,note:''},{name:'Vladar',pos:'G',ovr:84,note:''}]
-  },
-  firebirds:{
-    lines:[{label:'Line 1',players:['McKenna','Celebrini','Helenius']},{label:'Line 2',players:['Peterka','Gauthier','Caufield']},{label:'Line 3',players:['Barbashev','Nelson','Killzachyn']},{label:'Line 4',players:['Tippet','Gourde','Esierman']}],
-    dpairs:[{label:'Pair 1',players:['Nikishin','Fox']},{label:'Pair 2',players:['Hutson','Durzi']},{label:'Pair 3',players:['Anderson','Kesserling']}],
-    players:[{name:'McKenna',pos:'LW',ovr:96,note:''},{name:'Celebrini',pos:'C',ovr:94,note:''},{name:'Helenius',pos:'RW',ovr:83,note:''},{name:'Peterka',pos:'RW',ovr:86,note:''},{name:'Gauthier',pos:'LW',ovr:87,note:''},{name:'Caufield',pos:'RW',ovr:90,note:''},{name:'Barbashev',pos:'C',ovr:86,note:''},{name:'Nelson',pos:'C',ovr:86,note:''},{name:'Killzachyn',pos:'LW',ovr:86,note:''},{name:'Tippet',pos:'LW',ovr:84,note:''},{name:'Gourde',pos:'C',ovr:83,note:''},{name:'Esierman',pos:'C',ovr:84,note:''},{name:'Nikishin',pos:'D',ovr:84,note:''},{name:'Fox',pos:'D',ovr:90,note:''},{name:'Hutson',pos:'D',ovr:90,note:''},{name:'Durzi',pos:'D',ovr:85,note:''},{name:'Anderson',pos:'D',ovr:86,note:''},{name:'Kesserling',pos:'D',ovr:84,note:''},{name:'Walman',pos:'D',ovr:83,note:'Extra'},{name:'Graves',pos:'D',ovr:84,note:'Extra'},{name:'Cossa',pos:'G',ovr:89,note:''}]
-  },
-  outlaws:{
-    lines:[{label:'Line 1',players:['Raymond','Thompson','Johnston']},{label:'Line 2',players:['Slaf','Schmaltz','J.T. Miller']},{label:'Line 3',players:['Lavoie','Wright','Coyle']},{label:'Line 4',players:['Marchessault','E. Lindholm','Mantha']}],
-    dpairs:[{label:'Pair 1',players:['Werenski','Simashev']},{label:'Pair 2',players:['Power','Letang']},{label:'Pair 3',players:['Mintykov','Nemec']}],
-    players:[{name:'Raymond',pos:'LW',ovr:89,note:''},{name:'Thompson',pos:'C',ovr:91,note:''},{name:'Johnston',pos:'RW',ovr:91,note:''},{name:'Slaf',pos:'LW',ovr:87,note:''},{name:'Schmaltz',pos:'C',ovr:87,note:''},{name:'J.T. Miller',pos:'C',ovr:87,note:''},{name:'Lavoie',pos:'LW',ovr:85,note:''},{name:'Wright',pos:'C',ovr:84,note:''},{name:'Coyle',pos:'C',ovr:85,note:''},{name:'Marchessault',pos:'RW',ovr:84,note:''},{name:'E. Lindholm',pos:'C',ovr:84,note:''},{name:'Mantha',pos:'LW',ovr:84,note:''},{name:'Werenski',pos:'D',ovr:94,note:''},{name:'Simashev',pos:'D',ovr:84,note:''},{name:'Power',pos:'D',ovr:85,note:''},{name:'Letang',pos:'D',ovr:86,note:''},{name:'Mintykov',pos:'D',ovr:84,note:''},{name:'Nemec',pos:'D',ovr:85,note:''},{name:'Hellebuyck',pos:'G',ovr:92,note:''},{name:'Levi',pos:'G',ovr:79,note:''},{name:'Morgan Frost',pos:'C',ovr:83,note:'Scratched'},{name:'M. Kesselring',pos:'D',ovr:0,note:'Scratched'}]
-  },
-  magic:{
-    lines:[{label:'Line 1',players:['DeBrincatt','Barkov','Guenther']},{label:'Line 2',players:['Kaprizov','Misa','Kasper']},{label:'Line 3',players:['Svechnikov','Necas','Hyman']},{label:'Line 4',players:['Landeskog','Byfield','Laine']}],
-    dpairs:[{label:'Pair 1',players:['Slavin','Josi']},{label:'Pair 2',players:['LaCombe','Weegar']},{label:'Pair 3',players:['Gavrikov','Broberg']}],
-    players:[{name:'DeBrincatt',pos:'LW',ovr:0,note:''},{name:'Barkov',pos:'C',ovr:0,note:''},{name:'Guenther',pos:'RW',ovr:0,note:''},{name:'Kaprizov',pos:'LW',ovr:0,note:''},{name:'Misa',pos:'C',ovr:0,note:''},{name:'Kasper',pos:'C',ovr:0,note:''},{name:'Svechnikov',pos:'LW',ovr:0,note:''},{name:'Necas',pos:'C',ovr:0,note:''},{name:'Hyman',pos:'LW',ovr:0,note:''},{name:'Landeskog',pos:'LW',ovr:0,note:''},{name:'Byfield',pos:'C',ovr:0,note:''},{name:'Laine',pos:'LW',ovr:0,note:''},{name:'Dubois',pos:'C',ovr:0,note:'Extra'},{name:'Nurse',pos:'D',ovr:0,note:'Extra'},{name:'Slavin',pos:'D',ovr:0,note:''},{name:'Josi',pos:'D',ovr:0,note:''},{name:'LaCombe',pos:'D',ovr:0,note:''},{name:'Weegar',pos:'D',ovr:0,note:''},{name:'Gavrikov',pos:'D',ovr:0,note:''},{name:'Broberg',pos:'D',ovr:0,note:''},{name:'Vasilevskiy',pos:'G',ovr:0,note:''},{name:'Woll',pos:'G',ovr:0,note:''}]
+  storm:{
+    lines:[
+      {label:'Line 1',players:['Beckett Sennecke','Aliaksei Protas','Ivan Demidov']},
+      {label:'Line 2',players:['Brandon Hagel','Xavier Feathers','Mitch Marner']},
+      {label:'Line 3',players:['Lawson Crouse','Tij Iginla','Seth Jarvis']},
+      {label:'Line 4',players:['Samuel Honzek','Caleb Desnoyers','Jack Quinn']},
+    ],
+    dpairs:[
+      {label:'Pair 1',players:['Brock Faber','Matthew Schaefer']},
+      {label:'Pair 2',players:['Bowen Byram','Simon Edvinsson']},
+      {label:'Pair 3',players:['Olen Zellweger','Axel Sandin-Pellikka']},
+    ],
+    players:[
+{name:'Ivan Demidov',pos:'RW',ovr:93,gp:2,g:0,a:1,pts_s:1,plusminus:-1,shots:2,shot_pct:0,ppt:'1:46',pim:0,hits:1},
+{name:'Mitch Marner',pos:'RW',ovr:91,gp:2,g:0,a:1,pts_s:1,plusminus:-1,shots:4,shot_pct:0,ppt:'2:00',pim:0,hits:0},
+{name:'Seth Jarvis',pos:'RW',ovr:88,gp:2,g:0,a:1,pts_s:1,plusminus:1,shots:2,shot_pct:0,ppt:'2:24',pim:0,hits:2},
+{name:'Beckett Sennecke',pos:'LW',ovr:90,gp:2,g:1,a:0,pts_s:1,plusminus:-2,shots:3,shot_pct:0.333,ppt:'1:24',pim:5,hits:3},
+{name:'Brandon Hagel',pos:'LW',ovr:90,gp:2,g:0,a:0,pts_s:0,plusminus:-1,shots:3,shot_pct:0,ppt:'1:19',pim:0,hits:8},
+{name:'Jack Quinn',pos:'RW',ovr:83,gp:2,g:0,a:0,pts_s:0,plusminus:0,shots:0,shot_pct:0,ppt:'0:00',pim:0,hits:0},
+{name:'Lawson Crouse',pos:'LW',ovr:83,gp:2,g:0,a:0,pts_s:0,plusminus:0,shots:1,shot_pct:0,ppt:'0:00',pim:0,hits:1},
+{name:'Aliaksei Protas',pos:'C',ovr:86,gp:2,g:0,a:0,pts_s:0,plusminus:0,shots:3,shot_pct:0,ppt:'0:31',pim:0,hits:1},
+{name:'Xavier Feathers',pos:'C',ovr:86,gp:2,g:0,a:0,pts_s:0,plusminus:0,shots:0,shot_pct:0,ppt:'0:00',pim:0,hits:0},
+{name:'Tij Iginla',pos:'C',ovr:84,gp:2,g:1,a:0,pts_s:1,plusminus:0,shots:2,shot_pct:0.5,ppt:'0:34',pim:2,hits:1},
+{name:'Samuel Honzek',pos:'C',ovr:84,gp:2,g:0,a:0,pts_s:0,plusminus:0,shots:1,shot_pct:0,ppt:'0:00',pim:0,hits:2},
+{name:'Caleb Desnoyers',pos:'C',ovr:84,gp:2,g:0,a:0,pts_s:0,plusminus:0,shots:0,shot_pct:0,ppt:'0:00',pim:0,hits:0},
+{name:'Brady Martin',pos:'C',ovr:79,gp:2,g:0,a:0,pts_s:0,plusminus:0,shots:0,shot_pct:0,ppt:'0:00',pim:0,hits:0},
+{name:'Brock Faber',pos:'D',ovr:88,gp:2,g:0,a:0,pts_s:0,plusminus:-1,shots:3,shot_pct:0,ppt:'1:08',pim:0,hits:3},
+{name:'Matthew Schaefer',pos:'D',ovr:88,gp:2,g:0,a:0,pts_s:0,plusminus:0,shots:0,shot_pct:0,ppt:'0:00',pim:0,hits:0},
+{name:'Bowen Byram',pos:'D',ovr:86,gp:2,g:0,a:0,pts_s:0,plusminus:0,shots:3,shot_pct:0,ppt:'0:35',pim:10,hits:3},
+{name:'Simon Edvinsson',pos:'D',ovr:85,gp:2,g:0,a:0,pts_s:0,plusminus:-1,shots:0,shot_pct:0,ppt:'0:03',pim:0,hits:0},
+{name:'Olen Zellweger',pos:'D',ovr:83,gp:2,g:0,a:0,pts_s:0,plusminus:-1,shots:0,shot_pct:0,ppt:'0:45',pim:0,hits:1},
+{name:'Axel Sandin-Pellikka',pos:'D',ovr:82,gp:1,g:0,a:0,pts_s:0,plusminus:0,shots:0,shot_pct:0,ppt:'0:00',pim:0,hits:0},
+{name:'Carson Bjarnason',pos:'G',ovr:86,gp:2,gw:0,gaa:2.00,svp:0.900,sa:40,s:36},
+{name:'Jakub Dobes',pos:'G',ovr:84,gp:0,gw:0,gaa:0,svp:0,sa:0,s:0},
+    ]
   },
   voyageurs:{
-    lines:[{label:'Line 1',players:['Connor','MacLordan','Hagens']},{label:'Line 2',players:['Dorofeyev','Strome','Knies']},{label:'Line 3',players:['Holloway','Lundell','Wilson']},{label:'Line 4',players:['Lafreniere','Mittelstadt','Roslovic']}],
-    dpairs:[{label:'Pair 1',players:['Harley','McAvoy']},{label:'Pair 2',players:['Montour','Zub']},{label:'Pair 3',players:['Tanev','Tucker']}],
-    players:[{name:'Connor',pos:'LW',ovr:0,note:''},{name:'MacLordan',pos:'C',ovr:0,note:''},{name:'Hagens',pos:'C',ovr:0,note:''},{name:'Dorofeyev',pos:'LW',ovr:0,note:''},{name:'Strome',pos:'C',ovr:0,note:''},{name:'Knies',pos:'LW',ovr:0,note:''},{name:'Holloway',pos:'LW',ovr:0,note:''},{name:'Lundell',pos:'C',ovr:0,note:''},{name:'Wilson',pos:'RW',ovr:0,note:''},{name:'Lafreniere',pos:'LW',ovr:0,note:''},{name:'Mittelstadt',pos:'C',ovr:0,note:''},{name:'Roslovic',pos:'C',ovr:0,note:''},{name:'Harley',pos:'D',ovr:0,note:''},{name:'McAvoy',pos:'D',ovr:0,note:''},{name:'Montour',pos:'D',ovr:0,note:''},{name:'Zub',pos:'D',ovr:0,note:''},{name:'Tanev',pos:'D',ovr:0,note:''},{name:'Tucker',pos:'D',ovr:0,note:''},{name:'Swayman',pos:'G',ovr:0,note:''},{name:'Gustavsson',pos:'G',ovr:0,note:''}]
+    lines:[
+      {label:'Line 1',players:['Kyle Connor','James Hagens','Tom Wilson']},
+      {label:'Line 2',players:['Matthew Knies','Clayton MacLordan','Pavel Dorofeyev']},
+      {label:'Line 3',players:['Alexis Lafreniere','Anton Lundell','Dylan Holloway']},
+      {label:'Line 4',players:['Dylan Strome','Casey Mittelstadt','Jack Roslovic']},
+    ],
+    dpairs:[
+      {label:'Pair 1',players:['Charlie McAvoy','Thomas Harley']},
+      {label:'Pair 2',players:['Brandon Montour','Artem Zub']},
+      {label:'Pair 3',players:['Christopher Tanev','BJ Tucker']},
+    ],
+    players:[
+      {name:'James Hagens',pos:'C',ovr:92,gp:0,g:0,a:0,pts_s:0,plusminus:0,shots:0,shot_pct:0,ppt:'0:00',pim:0,hits:0},
+      {name:'Kyle Connor',pos:'LW',ovr:92,gp:1,g:0,a:0,pts_s:0,plusminus:-2,shots:2,shot_pct:0,ppt:'1:51',pim:0,hits:0},
+      {name:'Tom Wilson',pos:'RW',ovr:86,gp:1,g:1,a:0,pts_s:1,plusminus:1,shots:1,shot_pct:1.000,ppt:'0:40',pim:2,hits:3},
+      {name:'Clayton MacLordan',pos:'C',ovr:88,gp:0,g:0,a:0,pts_s:0,plusminus:0,shots:0,shot_pct:0,ppt:'0:00',pim:0,hits:0},
+      {name:'Matthew Knies',pos:'LW',ovr:88,gp:0,g:0,a:0,pts_s:0,plusminus:0,shots:0,shot_pct:0,ppt:'0:00',pim:0,hits:0},
+      {name:'Anton Lundell',pos:'C',ovr:86,gp:1,g:1,a:0,pts_s:1,plusminus:0,shots:1,shot_pct:1.000,ppt:'0:46',pim:0,hits:0},
+      {name:'Dylan Strome',pos:'C',ovr:86,gp:1,g:0,a:1,pts_s:1,plusminus:-1,shots:1,shot_pct:0,ppt:'1:35',pim:5,hits:0},
+      {name:'Pavel Dorofeyev',pos:'LW',ovr:86,gp:0,g:0,a:0,pts_s:0,plusminus:0,shots:0,shot_pct:0,ppt:'0:00',pim:0,hits:0},
+      {name:'Casey Mittelstadt',pos:'C',ovr:84,gp:0,g:0,a:0,pts_s:0,plusminus:0,shots:0,shot_pct:0,ppt:'0:00',pim:0,hits:0},
+      {name:'Alexis Lafreniere',pos:'LW',ovr:84,gp:1,g:0,a:0,pts_s:0,plusminus:-1,shots:2,shot_pct:0,ppt:'0:44',pim:0,hits:0},
+      {name:'Dylan Holloway',pos:'LW',ovr:84,gp:1,g:0,a:1,pts_s:1,plusminus:1,shots:0,shot_pct:0,ppt:'0:49',pim:0,hits:1},
+      {name:'Jack Roslovic',pos:'C',ovr:84,gp:1,g:0,a:0,pts_s:0,plusminus:-1,shots:4,shot_pct:0,ppt:'1:10',pim:0,hits:0},
+      {name:'Charlie McAvoy',pos:'D',ovr:90,gp:1,g:0,a:0,pts_s:0,plusminus:-2,shots:0,shot_pct:0,ppt:'0:52',pim:0,hits:1},
+      {name:'Thomas Harley',pos:'D',ovr:87,gp:1,g:0,a:0,pts_s:0,plusminus:0,shots:0,shot_pct:0,ppt:'0:07',pim:0,hits:0},
+      {name:'Brandon Montour',pos:'D',ovr:87,gp:1,g:0,a:0,pts_s:0,plusminus:-3,shots:1,shot_pct:0,ppt:'1:13',pim:0,hits:1},
+      {name:'Artem Zub',pos:'D',ovr:86,gp:0,g:0,a:0,pts_s:0,plusminus:0,shots:0,shot_pct:0,ppt:'0:00',pim:0,hits:0},
+      {name:'Christopher Tanev',pos:'D',ovr:85,gp:1,g:0,a:1,pts_s:1,plusminus:1,shots:0,shot_pct:0,ppt:'0:21',pim:0,hits:1},
+      {name:'BJ Tucker',pos:'D',ovr:81,gp:1,g:0,a:1,pts_s:1,plusminus:1,shots:0,shot_pct:0,ppt:'0:42',pim:0,hits:1},
+      {name:'Jeremy Swayman',pos:'G',ovr:90,gp:1,gw:0,gaa:2.01,svp:0.867,sa:15,s:13},
+      {name:'Filip Gustavsson',pos:'G',ovr:86,gp:0,gw:0,gaa:0,svp:0,sa:0,s:0},
+    ]
   },
-  storm:       {lines:[],dpairs:[],players:[],note:'Roster coming soon'},
-  rams:        {lines:[],dpairs:[],players:[],note:'Roster coming soon'},
-  waves:       {lines:[],dpairs:[],players:[],note:'Roster coming soon'},
-  longhorns:   {lines:[],dpairs:[],players:[],note:'Roster coming soon'},
-  ghostpirates:{lines:[],dpairs:[],players:[],note:'Roster coming soon'},
+  legends:{
+    lines:[
+      {label:'Line 1',players:['Anders Lee','Sidney Crosby','David Pastrnak']},
+      {label:'Line 2',players:['','Mark Scheifele','William Nylander']},
+      {label:'Line 3',players:['','Nick Suzuki','Jackson Blake']},
+      {label:'Line 4',players:['','Bo Horvat','']},
+    ],
+    dpairs:[
+      {label:'Pair 1',players:['Landon Dupont','Mikhail Sergachev']},
+      {label:'Pair 2',players:['Seth Jones','Esa Lindell']},
+      {label:'Pair 3',players:['Seamus Casey','Rasmus Jarnkrok']},
+    ],
+    players:[
+      {name:'David Pastrnak',pos:'RW',ovr:95,gp:1,g:1,a:0,pts_s:1,plusminus:0,shots:5,shot_pct:0.2,ppt:'1:57',pim:2,hits:0},
+      {name:'William Nylander',pos:'RW',ovr:90,gp:1,g:1,a:0,pts_s:1,plusminus:0,shots:2,shot_pct:0.5,ppt:'1:17',pim:2,hits:0},
+      {name:'Jackson Blake',pos:'RW',ovr:84,gp:1,g:0,a:0,pts_s:0,plusminus:0,shots:0,shot_pct:0,ppt:'0:00',pim:0,hits:0},
+      {name:'Sidney Crosby',pos:'C',ovr:92,gp:1,g:0,a:0,pts_s:0,plusminus:1,shots:2,shot_pct:0,ppt:'2:31',pim:2,hits:0},
+      {name:'Mark Scheifele',pos:'C',ovr:91,gp:1,g:0,a:1,pts_s:1,plusminus:1,shots:3,shot_pct:0,ppt:'1:29',pim:2,hits:0},
+      {name:'Nick Suzuki',pos:'C',ovr:91,gp:1,g:0,a:1,pts_s:1,plusminus:0,shots:1,shot_pct:0,ppt:'1:07',pim:2,hits:0},
+      {name:'Bo Horvat',pos:'C',ovr:88,gp:1,g:0,a:0,pts_s:0,plusminus:0,shots:1,shot_pct:0,ppt:'1:14',pim:0,hits:0},
+      {name:'Matthew Poitras',pos:'C',ovr:86,gp:1,g:0,a:0,pts_s:0,plusminus:0,shots:0,shot_pct:0,ppt:'0:00',pim:0,hits:0},
+      {name:'Matt Duchene',pos:'C',ovr:85,gp:1,g:0,a:0,pts_s:0,plusminus:-1,shots:1,shot_pct:0,ppt:'0:35',pim:0,hits:0},
+      {name:'Anders Lee',pos:'LW',ovr:84,gp:1,g:0,a:1,pts_s:1,plusminus:1,shots:2,shot_pct:0,ppt:'1:25',pim:0,hits:0},
+      {name:'Landon Dupont',pos:'D',ovr:91,gp:1,g:0,a:0,pts_s:0,plusminus:0,shots:0,shot_pct:0,ppt:'0:00',pim:0,hits:0},
+      {name:'Mikhail Sergachev',pos:'D',ovr:88,gp:1,g:0,a:0,pts_s:0,plusminus:-1,shots:0,shot_pct:0,ppt:'0:41',pim:0,hits:2},
+      {name:'Seth Jones',pos:'D',ovr:87,gp:1,g:0,a:1,pts_s:1,plusminus:0,shots:0,shot_pct:0,ppt:'1:25',pim:0,hits:0},
+      {name:'Esa Lindell',pos:'D',ovr:86,gp:1,g:0,a:1,pts_s:1,plusminus:1,shots:1,shot_pct:0,ppt:'1:07',pim:0,hits:0},
+      {name:'Seamus Casey',pos:'D',ovr:85,gp:1,g:0,a:0,pts_s:0,plusminus:0,shots:0,shot_pct:0,ppt:'0:00',pim:0,hits:0},
+      {name:'Kaapo Dach',pos:'D',ovr:85,gp:1,g:0,a:0,pts_s:0,plusminus:0,shots:0,shot_pct:0,ppt:'0:04',pim:0,hits:0},
+      {name:'Jacob Markstrom',pos:'G',ovr:88,gp:1,gw:0,gaa:2.77,svp:0.842,sa:19,s:16},
+      {name:'Brandon Bussi',pos:'G',ovr:85,gp:0,gw:0,gaa:0,svp:0,sa:0,s:0},
+    ]
+  },
+  bulldogs:{
+    lines:[
+      {label:'Line 1',players:['Kevin Fiala','Will Smith','Mikko Rantanen']},
+      {label:'Line 2',players:['Andre Burakovsky','Michael Misa','Valeri Nichushkin']},
+      {label:'Line 3',players:['Jesse Seppanen','Adam Lowry','Patrick Kane']},
+      {label:'Line 4',players:['','Ridly Greig','Marco Woodman']},
+    ],
+    dpairs:[
+      {label:'Pair 1',players:['Dmitry Simashev','Evan Bouchard']},
+      {label:'Pair 2',players:['Josh Morrissey','J.J. Moser']},
+      {label:'Pair 3',players:['Nate Schmidt','Sam Malinski']},
+    ],
+    players:[
+      {name:'Mikko Rantanen',pos:'RW',ovr:92,gp:1,g:0,a:0,pts_s:0,plusminus:-3,shots:1,shot_pct:0,ppt:'1:51',pim:0,hits:2},
+      {name:'Kevin Fiala',pos:'LW',ovr:87,gp:1,g:0,a:0,pts_s:0,plusminus:-2,shots:3,shot_pct:0,ppt:'2:48',pim:2,hits:1},
+      {name:'Valeri Nichushkin',pos:'RW',ovr:85,gp:1,g:0,a:1,pts_s:1,plusminus:-1,shots:2,shot_pct:0,ppt:'1:26',pim:0,hits:0},
+      {name:'Patrick Kane',pos:'RW',ovr:84,gp:1,g:0,a:0,pts_s:0,plusminus:-1,shots:0,shot_pct:0,ppt:'0:03',pim:0,hits:0},
+      {name:'Marco Woodman',pos:'RW',ovr:83,gp:0,g:0,a:0,pts_s:0,plusminus:0,shots:0,shot_pct:0,ppt:'0:00',pim:0,hits:0},
+      {name:'Jimmy Snuggerud',pos:'RW',ovr:82,gp:0,g:0,a:0,pts_s:0,plusminus:0,shots:0,shot_pct:0,ppt:'0:00',pim:0,hits:0},
+      {name:'Will Smith',pos:'C',ovr:86,gp:0,g:0,a:0,pts_s:0,plusminus:0,shots:0,shot_pct:0,ppt:'0:00',pim:0,hits:0},
+      {name:'Michael Misa',pos:'C',ovr:88,gp:0,g:0,a:0,pts_s:0,plusminus:0,shots:0,shot_pct:0,ppt:'0:00',pim:0,hits:0},
+      {name:'Adam Lowry',pos:'C',ovr:84,gp:1,g:0,a:0,pts_s:0,plusminus:0,shots:1,shot_pct:0,ppt:'0:13',pim:0,hits:1},
+      {name:'Ridly Greig',pos:'C',ovr:83,gp:0,g:0,a:0,pts_s:0,plusminus:0,shots:0,shot_pct:0,ppt:'0:00',pim:0,hits:0},
+      {name:'Andre Burakovsky',pos:'LW',ovr:83,gp:1,g:0,a:0,pts_s:0,plusminus:-1,shots:1,shot_pct:0,ppt:'0:23',pim:0,hits:0},
+      {name:'Jesse Seppanen',pos:'LW',ovr:83,gp:0,g:0,a:0,pts_s:0,plusminus:0,shots:0,shot_pct:0,ppt:'0:00',pim:0,hits:0},
+      {name:'Victor Hedman',pos:'D',ovr:91,gp:1,g:0,a:0,pts_s:0,plusminus:-4,shots:0,shot_pct:0,ppt:'0:40',pim:0,hits:3},
+      {name:'Dmitri Simashev',pos:'D',ovr:84,gp:0,g:0,a:0,pts_s:0,plusminus:0,shots:0,shot_pct:0,ppt:'0:00',pim:0,hits:0},
+      {name:'Evan Bouchard',pos:'D',ovr:90,gp:1,g:0,a:0,pts_s:0,plusminus:-4,shots:1,shot_pct:0,ppt:'1:10',pim:0,hits:1},
+      {name:'Josh Morrissey',pos:'D',ovr:90,gp:1,g:0,a:1,pts_s:1,plusminus:-2,shots:2,shot_pct:0,ppt:'1:17',pim:0,hits:2},
+      {name:'J.J. Moser',pos:'D',ovr:84,gp:1,g:0,a:0,pts_s:0,plusminus:0,shots:2,shot_pct:0,ppt:'1:27',pim:2,hits:2},
+      {name:'Nate Schmidt',pos:'D',ovr:83,gp:1,g:0,a:0,pts_s:0,plusminus:-2,shots:0,shot_pct:0,ppt:'0:00',pim:0,hits:2},
+      {name:'Sam Bennett',pos:'C',ovr:87,gp:1,g:1,a:0,pts_s:1,plusminus:-1,shots:8,shot_pct:0.125,ppt:'1:38',pim:2,hits:2},
+      {name:'Sergei Bobrovsky',pos:'G',ovr:87,gp:1,gw:0,gaa:13.37,svp:0.571,sa:14,s:8},
+      {name:'Carter George',pos:'G',ovr:86,gp:1,gw:0,gaa:7.25,svp:0.500,sa:8,s:4},
+    ]
+  },
+  waves:{
+    lines:[
+      {label:'Line 1',players:['Brad Marchand','Anthony Cirelli','Dawson Mercer']},
+      {label:'Line 2',players:['Victor Eklund','Claude Giroux','']},
+      {label:'Line 3',players:['Filip Ekberg','Matthew Savoie','']},
+      {label:'Line 4',players:['Danton Heinen','Shane Pinto','Shamar Moses']},
+    ],
+    dpairs:[
+      {label:'Pair 1',players:['Colton Parayko','Dylan DeMelo']},
+      {label:'Pair 2',players:['Ryan Pulock','Michael Matheson']},
+      {label:'Pair 3',players:['Zeev Buium','Kevin Korchinski']},
+    ],
+    players:[
+      {name:'Brad Marchand',pos:'LW',ovr:88,gp:1,g:0,a:0,pts_s:0,plusminus:-1,shots:2,shot_pct:0,ppt:'1:34',pim:0,hits:4},
+      {name:'Victor Eklund',pos:'LW',ovr:85,gp:1,g:0,a:1,pts_s:1,plusminus:2,shots:2,shot_pct:0,ppt:'1:44',pim:0,hits:0},
+      {name:'Filip Ekberg',pos:'LW',ovr:83,gp:0,g:0,a:0,pts_s:0,plusminus:0,shots:0,shot_pct:0,ppt:'0:00',pim:0,hits:0},
+      {name:'Danton Heinen',pos:'LW',ovr:81,gp:0,g:0,a:0,pts_s:0,plusminus:0,shots:0,shot_pct:0,ppt:'0:00',pim:0,hits:0},
+      {name:'Dawson Mercer',pos:'RW',ovr:84,gp:1,g:0,a:0,pts_s:0,plusminus:-1,shots:0,shot_pct:0,ppt:'0:31',pim:0,hits:0},
+      {name:'Shamar Moses',pos:'RW',ovr:79,gp:0,g:0,a:0,pts_s:0,plusminus:0,shots:0,shot_pct:0,ppt:'0:00',pim:0,hits:0},
+      {name:'Anthony Cirelli',pos:'C',ovr:86,gp:1,g:0,a:0,pts_s:0,plusminus:-1,shots:0,shot_pct:0,ppt:'1:33',pim:0,hits:0},
+      {name:'Claude Giroux',pos:'C',ovr:86,gp:1,g:0,a:1,pts_s:1,plusminus:1,shots:0,shot_pct:0,ppt:'1:48',pim:0,hits:0},
+      {name:'Matthew Savoie',pos:'C',ovr:86,gp:1,g:0,a:0,pts_s:0,plusminus:-2,shots:2,shot_pct:0,ppt:'0:55',pim:0,hits:2},
+      {name:'Shane Pinto',pos:'C',ovr:84,gp:0,g:0,a:0,pts_s:0,plusminus:0,shots:0,shot_pct:0,ppt:'0:00',pim:0,hits:0},
+      {name:'Jett Luchanko',pos:'C',ovr:83,gp:0,g:0,a:0,pts_s:0,plusminus:0,shots:0,shot_pct:0,ppt:'0:00',pim:0,hits:0},
+      {name:'Fraser Minten',pos:'C',ovr:82,gp:1,g:2,a:0,pts_s:2,plusminus:2,shots:3,shot_pct:0.667,ppt:'1:49',pim:0,hits:0},
+      {name:'Colton Parayko',pos:'D',ovr:86,gp:1,g:0,a:0,pts_s:0,plusminus:1,shots:3,shot_pct:0,ppt:'2:21',pim:0,hits:1},
+      {name:'Dylan DeMelo',pos:'D',ovr:86,gp:1,g:0,a:0,pts_s:0,plusminus:-3,shots:0,shot_pct:0,ppt:'0:25',pim:0,hits:3},
+      {name:'Ryan Pulock',pos:'D',ovr:86,gp:1,g:0,a:1,pts_s:1,plusminus:1,shots:0,shot_pct:0,ppt:'1:20',pim:0,hits:3},
+      {name:'Michael Matheson',pos:'D',ovr:84,gp:0,g:0,a:0,pts_s:0,plusminus:0,shots:0,shot_pct:0,ppt:'0:00',pim:0,hits:0},
+      {name:'Zeev Buium',pos:'D',ovr:83,gp:0,g:0,a:0,pts_s:0,plusminus:0,shots:0,shot_pct:0,ppt:'0:00',pim:0,hits:0},
+      {name:'Kevin Korchinski',pos:'D',ovr:83,gp:1,g:0,a:0,pts_s:0,plusminus:1,shots:1,shot_pct:0,ppt:'0:24',pim:0,hits:2},
+      {name:'Brenden Dillon',pos:'D',ovr:84,gp:1,g:0,a:0,pts_s:0,plusminus:-2,shots:0,shot_pct:0,ppt:'0:39',pim:0,hits:4},
+      {name:'Thatcher Demko',pos:'G',ovr:88,gp:1,gw:0,gaa:2.80,svp:0.875,sa:24,s:21},
+      {name:'Mackenzie Blackwood',pos:'G',ovr:85,gp:0,gw:0,gaa:0,svp:0,sa:0,s:0},
+    ]
+  },
+  liberty:{
+    lines:[
+      {label:'Line 1',players:['Alex Ovechkin','Sam Bennett','Clayton Keller']},
+      {label:'Line 2',players:['Carter Verhaeghe','Logan Stankoven','Drake Batherson']},
+      {label:'Line 3',players:['Nikolaj Ehlers','','']},
+      {label:'Line 4',players:['Jake Neighbours','Noah Cates','Trevor Moore']},
+    ],
+    dpairs:[
+      {label:'Pair 1',players:['Roman Josi','Jakob Chychrun']},
+      {label:'Pair 2',players:['Jackson LaCombe','Travis Sanheim']},
+      {label:'Pair 3',players:['Brandon Carlo','Sean Walker']},
+    ],
+    players:[
+      {name:'Clayton Keller',pos:'RW',ovr:90,gp:1,g:0,a:0,pts_s:0,plusminus:0,shots:0,shot_pct:0,ppt:'0:00',pim:0,hits:0},
+      {name:'Drake Batherson',pos:'RW',ovr:87,gp:1,g:0,a:0,pts_s:0,plusminus:0,shots:0,shot_pct:0,ppt:'0:00',pim:0,hits:0},
+      {name:'Sam Bennett',pos:'C',ovr:86,gp:1,g:0,a:0,pts_s:0,plusminus:0,shots:0,shot_pct:0,ppt:'0:50',pim:0,hits:1},
+      {name:'Logan Stankoven',pos:'C',ovr:86,gp:1,g:0,a:1,pts_s:1,plusminus:0,shots:1,shot_pct:0,ppt:'3:47',pim:0,hits:1},
+      {name:'Mikael Backlund',pos:'C',ovr:84,gp:1,g:0,a:1,pts_s:1,plusminus:1,shots:0,shot_pct:0,ppt:'0:40',pim:0,hits:0},
+      {name:'Jordan Staal',pos:'C',ovr:83,gp:1,g:0,a:0,pts_s:0,plusminus:0,shots:0,shot_pct:0,ppt:'0:00',pim:0,hits:0},
+      {name:'Alex Ovechkin',pos:'LW',ovr:86,gp:1,g:0,a:1,pts_s:1,plusminus:1,shots:2,shot_pct:0,ppt:'0:25',pim:0,hits:0},
+      {name:'Carter Verhaeghe',pos:'LW',ovr:86,gp:1,g:0,a:1,pts_s:1,plusminus:0,shots:1,shot_pct:0,ppt:'1:06',pim:0,hits:3},
+      {name:'Nikolaj Ehlers',pos:'LW',ovr:86,gp:1,g:0,a:0,pts_s:0,plusminus:-2,shots:1,shot_pct:0,ppt:'2:51',pim:0,hits:1},
+      {name:'Jake Neighbours',pos:'LW',ovr:84,gp:1,g:0,a:0,pts_s:0,plusminus:0,shots:0,shot_pct:0,ppt:'0:00',pim:0,hits:0},
+      {name:'Trevor Moore',pos:'LW',ovr:83,gp:1,g:0,a:0,pts_s:0,plusminus:0,shots:0,shot_pct:0,ppt:'0:00',pim:0,hits:0},
+      {name:'Noah Cates',pos:'LW',ovr:83,gp:1,g:0,a:0,pts_s:0,plusminus:0,shots:0,shot_pct:0,ppt:'0:00',pim:0,hits:0},
+      {name:'Michael Misa',pos:'C',ovr:88,gp:1,g:1,a:0,pts_s:1,plusminus:4,shots:4,shot_pct:0.25,ppt:'1:37',pim:0,hits:0},
+      {name:'Roman Josi',pos:'D',ovr:92,gp:1,g:0,a:0,pts_s:0,plusminus:0,shots:1,shot_pct:0,ppt:'2:00',pim:0,hits:2},
+      {name:'Jakob Chychrun',pos:'D',ovr:88,gp:1,g:0,a:0,pts_s:0,plusminus:1,shots:1,shot_pct:0,ppt:'1:05',pim:0,hits:0},
+      {name:'Jackson LaCombe',pos:'D',ovr:86,gp:1,g:0,a:0,pts_s:0,plusminus:0,shots:0,shot_pct:0,ppt:'0:00',pim:0,hits:0},
+      {name:'Travis Sanheim',pos:'D',ovr:86,gp:1,g:0,a:0,pts_s:0,plusminus:-1,shots:1,shot_pct:0,ppt:'1:09',pim:0,hits:2},
+      {name:'Brandon Carlo',pos:'D',ovr:85,gp:1,g:0,a:0,pts_s:0,plusminus:0,shots:0,shot_pct:0,ppt:'0:33',pim:0,hits:2},
+      {name:'Sean Walker',pos:'D',ovr:84,gp:1,g:0,a:0,pts_s:0,plusminus:0,shots:0,shot_pct:0,ppt:'0:00',pim:0,hits:0},
+      {name:'Igor Shesterkin',pos:'G',ovr:90,gp:1,gw:1,gaa:1.86,svp:0.923,sa:26,s:24},
+      {name:'Dan Vladar',pos:'G',ovr:84,gp:0,gw:0,gaa:0,svp:0,sa:0,s:0},
+    ]
+  },
+  firebirds:{
+    lines:[
+      {label:'Line 1',players:['Gavin McKenna','Macklin Celebrini','Andrei Svechnikov']},
+      {label:'Line 2',players:['Dylan Guenther','Brock Nelson','JJ Peterka']},
+      {label:'Line 3',players:['Cutter Gauthier','Nazem Kadri','Konsta Helenius']},
+      {label:'Line 4',players:['Ivan Barbashev','Yanni Gourde','']},
+    ],
+    dpairs:[
+      {label:'Pair 1',players:['Lane Hutson','Noah Dobson']},
+      {label:'Pair 2',players:['Sean Durzi','Mikey Anderson']},
+      {label:'Pair 3',players:['Alexander Nikishin','Jacob Trouba']},
+    ],
+    players:[
+{name:'Gavin McKenna',pos:'LW',ovr:96,gp:2,g:0,a:0,pts_s:0,plusminus:0,shots:0,shot_pct:0,ppt:'0:00',pim:0,hits:0},
+{name:'Macklin Celebrini',pos:'C',ovr:94,gp:2,g:0,a:1,pts_s:1,plusminus:1,shots:3,shot_pct:0,ppt:'1:49',pim:0,hits:5},
+{name:'Andrei Svechnikov',pos:'RW',ovr:86,gp:2,g:0,a:0,pts_s:0,plusminus:0,shots:3,shot_pct:0,ppt:'1:42',pim:0,hits:1},
+{name:'JJ Peterka',pos:'RW',ovr:86,gp:2,g:0,a:0,pts_s:0,plusminus:0,shots:0,shot_pct:0,ppt:'2:52',pim:2,hits:6},
+{name:'Konsta Helenius',pos:'RW',ovr:83,gp:2,g:0,a:0,pts_s:0,plusminus:0,shots:0,shot_pct:0,ppt:'0:50',pim:0,hits:0},
+
+{name:'Dylan Guenther',pos:'LW',ovr:88,gp:2,g:0,a:0,pts_s:0,plusminus:1,shots:5,shot_pct:0,ppt:'3:43',pim:0,hits:0},
+{name:'Cutter Gauthier',pos:'LW',ovr:87,gp:2,g:0,a:0,pts_s:0,plusminus:0,shots:2,shot_pct:0,ppt:'1:21',pim:0,hits:1},
+{name:'Ivan Barbashev',pos:'LW',ovr:86,gp:2,g:0,a:0,pts_s:0,plusminus:0,shots:2,shot_pct:0,ppt:'0:59',pim:0,hits:3},
+{name:'Cole Eiserman',pos:'LW',ovr:83,gp:2,g:0,a:0,pts_s:0,plusminus:0,shots:0,shot_pct:0,ppt:'0:00',pim:0,hits:0},
+
+{name:'Brock Nelson',pos:'C',ovr:86,gp:2,g:0,a:0,pts_s:0,plusminus:0,shots:2,shot_pct:0,ppt:'1:45',pim:2,hits:3},
+{name:'Nazem Kadri',pos:'C',ovr:84,gp:2,g:0,a:0,pts_s:0,plusminus:0,shots:1,shot_pct:0,ppt:'1:03',pim:0,hits:1},
+{name:'Yanni Gourde',pos:'C',ovr:84,gp:2,g:0,a:0,pts_s:0,plusminus:0,shots:0,shot_pct:0,ppt:'0:00',pim:0,hits:0},
+
+{name:'Lane Hutson',pos:'D',ovr:90,gp:2,g:0,a:0,pts_s:0,plusminus:0,shots:0,shot_pct:0,ppt:'0:00',pim:0,hits:0},
+{name:'Noah Dobson',pos:'D',ovr:88,gp:2,g:0,a:0,pts_s:0,plusminus:1,shots:0,shot_pct:0,ppt:'2:11',pim:5,hits:5},
+{name:'Sean Durzi',pos:'D',ovr:85,gp:2,g:0,a:0,pts_s:0,plusminus:0,shots:3,shot_pct:0,ppt:'0:59',pim:0,hits:1},
+{name:'Mikey Anderson',pos:'D',ovr:85,gp:2,g:0,a:0,pts_s:0,plusminus:0,shots:0,shot_pct:0,ppt:'1:28',pim:0,hits:0},
+{name:'Alexander Nikishin',pos:'D',ovr:84,gp:2,g:1,a:0,pts_s:1,plusminus:1,shots:1,shot_pct:1.0,ppt:'1:11',pim:0,hits:2},
+{name:'Jacob Trouba',pos:'D',ovr:83,gp:2,g:0,a:0,pts_s:0,plusminus:0,shots:0,shot_pct:0,ppt:'1:27',pim:0,hits:1},
+
+{name:'Sebastian Cossa',pos:'G',ovr:89,gp:2,gw:1,gaa:0.51,svp:0.976,sa:41,s:40},
+{name:'Jet Greaves',pos:'G',ovr:84,gp:0,gw:0,gaa:0,svp:0,sa:0,s:0},
+    ]
+  },
+  imperials:{
+    lines:[
+      {label:'Line 1',players:['Matthew Tkachuk','Adam Fantilli','Mackie Samoskevich']},
+      {label:'Line 2',players:['Jake DeBrusk','Jack Hughes','Fabian Zetterlund']},
+      {label:'Line 3',players:['Kiefer Sherwood','Roope Hintz','']},
+      {label:'Line 4',players:['','Ryan Nugent-Hopkins','']},
+    ],
+    dpairs:[
+      {label:'Pair 1',players:['Filip Hronek','Erik Karlsson']},
+      {label:'Pair 2',players:['Jonas Brodin','Jonas Siegenthaler']},
+      {label:'Pair 3',players:["K'Andre Miller",'Mason Lohrei']},
+    ],
+    players:[
+{name:'Adam Fantilli',pos:'C',ovr:97,gp:2,g:0,a:0,pts_s:0,plusminus:0,shots:0,shot_pct:0,ppt:'0:00',pim:0,hits:0},
+{name:'Jack Hughes',pos:'C',ovr:93,gp:2,g:0,a:2,pts_s:2,plusminus:0,shots:0,shot_pct:0,ppt:'0:51',pim:0,hits:3},
+{name:'Roope Hintz',pos:'C',ovr:88,gp:2,g:0,a:0,pts_s:0,plusminus:-2,shots:2,shot_pct:0,ppt:'1:11',pim:0,hits:5},
+{name:'Ryan Nugent-Hopkins',pos:'C',ovr:87,gp:2,g:0,a:0,pts_s:0,plusminus:-2,shots:3,shot_pct:0,ppt:'2:00',pim:0,hits:1},
+{name:'Marco Rossi',pos:'C',ovr:86,gp:2,g:1,a:1,pts_s:2,plusminus:0,shots:2,shot_pct:0.500,ppt:'0:35',pim:0,hits:2},
+{name:'Dylan Cozens',pos:'C',ovr:85,gp:2,g:1,a:1,pts_s:2,plusminus:-1,shots:2,shot_pct:0.500,ppt:'2:22',pim:0,hits:4},
+{name:'Matthew Tkachuk',pos:'LW',ovr:93,gp:2,g:0,a:1,pts_s:1,plusminus:-3,shots:4,shot_pct:0,ppt:'1:43',pim:0,hits:10},
+{name:'Jake DeBrusk',pos:'LW',ovr:84,gp:2,g:1,a:1,pts_s:2,plusminus:0,shots:5,shot_pct:0.200,ppt:'0:35',pim:0,hits:2},
+{name:'Kiefer Sherwood',pos:'LW',ovr:83,gp:2,g:0,a:0,pts_s:0,plusminus:0,shots:0,shot_pct:0,ppt:'0:00',pim:0,hits:0},
+{name:'Mackie Samoskevich',pos:'RW',ovr:83,gp:2,g:0,a:0,pts_s:0,plusminus:0,shots:0,shot_pct:0,ppt:'0:00',pim:0,hits:0},
+{name:'Fabian Zetterlund',pos:'RW',ovr:82,gp:2,g:0,a:0,pts_s:0,plusminus:0,shots:0,shot_pct:0,ppt:'0:00',pim:0,hits:0},
+{name:'Filip Hronek',pos:'D',ovr:87,gp:2,g:0,a:0,pts_s:0,plusminus:0,shots:2,shot_pct:0,ppt:'0:34',pim:0,hits:0},
+{name:'Erik Karlsson',pos:'D',ovr:87,gp:2,g:0,a:0,pts_s:0,plusminus:-1,shots:2,shot_pct:0,ppt:'0:35',pim:0,hits:0},
+{name:'Jonas Brodin',pos:'D',ovr:86,gp:2,g:1,a:0,pts_s:1,plusminus:-2,shots:4,shot_pct:0.250,ppt:'2:19',pim:0,hits:3},
+{name:'Jonas Siegenthaler',pos:'D',ovr:85,gp:2,g:0,a:0,pts_s:0,plusminus:-1,shots:0,shot_pct:0,ppt:'0:25',pim:0,hits:1},
+{name:"K'Andre Miller",pos:'D',ovr:84,gp:2,g:0,a:0,pts_s:0,plusminus:0,shots:0,shot_pct:0,ppt:'0:00',pim:0,hits:0},
+{name:'Mason Lohrei',pos:'D',ovr:84,gp:2,g:0,a:0,pts_s:0,plusminus:0,shots:0,shot_pct:0,ppt:'0:00',pim:0,hits:0},
+{name:'Dustin Wolf',pos:'G',ovr:90,gp:2,gw:0,gaa:2.04,svp:0.850,sa:22,s:19},
+{name:'Yaroslav Askarov',pos:'G',ovr:83,gp:1,gw:0,gaa:7.64,svp:0.600,sa:10,s:6},
+    ]
+  },
+  outlaws:{
+    lines:[
+      {label:'Line 1',players:['Alexis Lavoie','Tage Thompson','Lucas Raymond']},
+      {label:'Line 2',players:['','Wyatt Johnston','Jonathan Marchessault']},
+      {label:'Line 3',players:['','Sebastian Aho','Anthony Mantha']},
+      {label:'Line 4',players:['','J.T. Miller','']},
+    ],
+    dpairs:[
+      {label:'Pair 1',players:['Zach Werenski','Kris Letang']},
+      {label:'Pair 2',players:['Simon Nemec','Owen Power']},
+      {label:'Pair 3',players:['Pavel Mintykov','Victor Hedman']},
+    ],
+    players:[
+      {name:'Tage Thompson',pos:'C',ovr:91,gp:1,g:0,a:1,pts_s:1,plusminus:1,shots:2,shot_pct:0,ppt:'1:23',pim:0,hits:2},
+      {name:'Wyatt Johnston',pos:'C',ovr:91,gp:1,g:1,a:0,pts_s:1,plusminus:2,shots:1,shot_pct:1.000,ppt:'1:19',pim:0,hits:4},
+      {name:'Sebastian Aho',pos:'C',ovr:90,gp:1,g:1,a:0,pts_s:1,plusminus:2,shots:2,shot_pct:0.500,ppt:'2:59',pim:0,hits:2},
+      {name:'J.T. Miller',pos:'C',ovr:87,gp:1,g:0,a:0,pts_s:0,plusminus:1,shots:3,shot_pct:0,ppt:'1:21',pim:0,hits:2},
+      {name:'Nick Schmaltz',pos:'C',ovr:87,gp:1,g:0,a:1,pts_s:1,plusminus:2,shots:2,shot_pct:0,ppt:'0:56',pim:0,hits:0},
+      {name:'Charlie Coyle',pos:'C',ovr:85,gp:1,g:0,a:0,pts_s:0,plusminus:0,shots:0,shot_pct:0,ppt:'0:53',pim:0,hits:0},
+      {name:'Lucas Raymond',pos:'RW',ovr:89,gp:1,g:0,a:1,pts_s:1,plusminus:1,shots:0,shot_pct:0,ppt:'1:12',pim:0,hits:0},
+      {name:'Jonathan Marchessault',pos:'RW',ovr:84,gp:1,g:0,a:0,pts_s:0,plusminus:0,shots:1,shot_pct:0,ppt:'0:57',pim:0,hits:1},
+      {name:'Anthony Mantha',pos:'RW',ovr:84,gp:1,g:0,a:0,pts_s:0,plusminus:0,shots:0,shot_pct:0,ppt:'0:00',pim:0,hits:0},
+      {name:'Alexis Lavoie',pos:'LW',ovr:85,gp:0,g:0,a:0,pts_s:0,plusminus:0,shots:0,shot_pct:0,ppt:'0:00',pim:0,hits:0},
+      {name:'Zach Werenski',pos:'D',ovr:94,gp:0,g:0,a:0,pts_s:0,plusminus:0,shots:0,shot_pct:0,ppt:'0:00',pim:0,hits:0},
+      {name:'Kris Letang',pos:'D',ovr:86,gp:1,g:0,a:0,pts_s:0,plusminus:2,shots:0,shot_pct:0,ppt:'0:32',pim:0,hits:2},
+      {name:'Simon Nemec',pos:'D',ovr:85,gp:0,g:0,a:0,pts_s:0,plusminus:0,shots:0,shot_pct:0,ppt:'0:00',pim:0,hits:0},
+      {name:'Owen Power',pos:'D',ovr:85,gp:1,g:1,a:0,pts_s:1,plusminus:2,shots:1,shot_pct:1.000,ppt:'1:21',pim:0,hits:0},
+      {name:'Pavel Mintykov',pos:'D',ovr:84,gp:0,g:0,a:0,pts_s:0,plusminus:0,shots:0,shot_pct:0,ppt:'0:00',pim:0,hits:0},
+      {name:'Dmitri Simashev',pos:'D',ovr:84,gp:1,g:0,a:1,pts_s:1,plusminus:1,shots:0,shot_pct:0,ppt:'0:51',pim:0,hits:2},
+      {name:'Connor Hellebuyck',pos:'G',ovr:92,gp:1,gw:1,gaa:0.00,svp:1.000,sa:24,s:24},
+      {name:'Devon Levi',pos:'G',ovr:80,gp:0,gw:0,gaa:0,svp:0,sa:0,s:0},
+    ]
+  },
+  stags:{
+    lines:[
+      {label:'Line 1',players:['Malcom Spence','Nathan MacKinnon','Alex Tuch']},
+      {label:'Line 2',players:['Chris Kreider','Jack Eichel','Troy Terry']},
+      {label:'Line 3',players:['Eeli Tolvanen','Brayden Point','Luke Evangelista']},
+      {label:'Line 4',players:['','Tyson McDermott','Justin Carbonneau']},
+    ],
+    dpairs:[
+      {label:'Pair 1',players:['Quinn Hughes','Artyom Levshunov']},
+      {label:'Pair 2',players:['Shea Theodore','Damon Severson']},
+      {label:'Pair 3',players:['Brenden Dillon','Erik Cernak']},
+    ],
+    players:[
+      // Stats from Images 8-9 (Seattle Stags won — Eichel 2g3a, MacKinnon 1g1a, Tuch 1g1a, Levshunov 1g1a, Tolvanen 1g, Spence 1g1a, Hughes 2a; Andersen 18SA 17S .944 1GAA)
+{name:'Nathan MacKinnon',pos:'C',ovr:98,gp:2,g:2,a:1,pts_s:3,plusminus:6,shots:5,shot_pct:0.400,ppt:'4:01',pim:0,hits:6},
+
+{name:'Jack Eichel',pos:'C',ovr:94,gp:2,g:3,a:4,pts_s:7,plusminus:5,shots:10,shot_pct:0.300,ppt:'4:23',pim:0,hits:5},
+
+{name:'Brayden Point',pos:'C',ovr:89,gp:2,g:0,a:0,pts_s:0,plusminus:-1,shots:3,shot_pct:0,ppt:'2:00',pim:0,hits:3},
+
+{name:'Tyson McDermott',pos:'C',ovr:88,gp:2,g:0,a:0,pts_s:0,plusminus:0,shots:0,shot_pct:0,ppt:'0:00',pim:0,hits:0},
+
+{name:'Mathew Barzal',pos:'C',ovr:86,gp:2,g:0,a:1,pts_s:1,plusminus:2,shots:2,shot_pct:0,ppt:'2:53',pim:0,hits:3},
+
+{name:'Pavel Zacha',pos:'C',ovr:85,gp:2,g:0,a:0,pts_s:0,plusminus:0,shots:0,shot_pct:0,ppt:'0:00',pim:0,hits:0},
+
+{name:'Malcom Spence',pos:'LW',ovr:88,gp:2,g:1,a:1,pts_s:2,plusminus:5,shots:5,shot_pct:0.200,ppt:'2:55',pim:5,hits:8},
+
+{name:'Chris Kreider',pos:'LW',ovr:84,gp:2,g:0,a:0,pts_s:0,plusminus:0,shots:0,shot_pct:0,ppt:'0:08',pim:0,hits:0},
+
+{name:'Eeli Tolvanen',pos:'LW',ovr:84,gp:2,g:1,a:0,pts_s:1,plusminus:1,shots:2,shot_pct:0.500,ppt:'1:42',pim:0,hits:1},
+
+{name:'Alex Tuch',pos:'RW',ovr:87,gp:2,g:1,a:2,pts_s:3,plusminus:4,shots:4,shot_pct:0.250,ppt:'2:47',pim:0,hits:6},
+
+{name:'Troy Terry',pos:'RW',ovr:87,gp:2,g:0,a:0,pts_s:0,plusminus:0,shots:0,shot_pct:0,ppt:'0:00',pim:0,hits:0},
+
+{name:'Luke Evangelista',pos:'RW',ovr:84,gp:2,g:0,a:0,pts_s:0,plusminus:0,shots:0,shot_pct:0,ppt:'0:00',pim:0,hits:0},
+
+{name:'Justin Carbonneau',pos:'RW',ovr:68,gp:2,g:0,a:0,pts_s:0,plusminus:0,shots:0,shot_pct:0,ppt:'0:00',pim:0,hits:0},
+
+{name:'Quinn Hughes',pos:'D',ovr:95,gp:2,g:0,a:3,pts_s:3,plusminus:4,shots:1,shot_pct:0,ppt:'2:03',pim:0,hits:8},
+
+{name:'Artyom Levshunov',pos:'D',ovr:89,gp:2,g:1,a:1,pts_s:2,plusminus:5,shots:5,shot_pct:0.200,ppt:'1:55',pim:0,hits:6},
+
+{name:'Shea Theodore',pos:'D',ovr:87,gp:2,g:1,a:0,pts_s:1,plusminus:0,shots:2,shot_pct:0.500,ppt:'2:34',pim:0,hits:1},
+
+{name:'Damon Severson',pos:'D',ovr:86,gp:2,g:0,a:1,pts_s:1,plusminus:1,shots:3,shot_pct:0,ppt:'2:04',pim:0,hits:2},
+
+{name:'Brenden Dillon',pos:'D',ovr:85,gp:2,g:0,a:1,pts_s:1,plusminus:3,shots:0,shot_pct:0,ppt:'1:10',pim:0,hits:2},
+
+{name:'Erik Cernak',pos:'D',ovr:85,gp:2,g:0,a:0,pts_s:0,plusminus:0,shots:0,shot_pct:0,ppt:'0:00',pim:0,hits:0},
+
+{name:'Frederik Andersen',pos:'G',ovr:86,gp:2,gw:2,gaa:1.00,svp:0.944,sa:29,s:27},
+
+{name:'Carter Hart',pos:'G',ovr:81,gp:0,gw:0,gaa:0,svp:0,sa:0,s:0},
+
+{name:'Jacob Fowler',pos:'G',ovr:80,gp:0,gw:0,gaa:0,svp:0,sa:0,s:0},
+    ]
+  },
+  comets:{
+    lines:[
+      {label:'Line 1',players:['Jake Guentzel','Tim Stützle','Matt Coronato']},
+      {label:'Line 2',players:['Artturi Lehkonen','Dylan Larkin','Bryan Rust']},
+      {label:'Line 3',players:['Tyler Bertuzzi','Logan Cooley','Jordan Eberle']},
+      {label:'Line 4',players:['','Tyler Seguin','']},
+    ],
+    dpairs:[
+      {label:'Pair 1',players:['Cale Makar','Miro Heiskanen']},
+      {label:'Pair 2',players:['Noah Hanifin','Brett Pesce']},
+      {label:'Pair 3',players:['Drew Doughty','Samuel Girard']},
+    ],
+    players:[
+      // Stats from Images 6-7 (Colorado Comets lost — Lehkonen 1a, Hanifin 1a, McMichael 1g; Oettinger 25SA 22S .880 3GAA)
+{name:'Tim Stützle',pos:'C',ovr:89,gp:2,g:0,a:0,pts_s:0,plusminus:0,shots:0,shot_pct:0,ppt:'0:00',pim:0,hits:0},
+
+{name:'Dylan Larkin',pos:'C',ovr:88,gp:2,g:0,a:0,pts_s:0,plusminus:-2,shots:2,shot_pct:0,ppt:'3:05',pim:7,hits:2},
+
+{name:'Logan Cooley',pos:'C',ovr:88,gp:2,g:0,a:0,pts_s:0,plusminus:0,shots:0,shot_pct:0,ppt:'0:00',pim:0,hits:0},
+
+{name:'Tyler Seguin',pos:'C',ovr:85,gp:2,g:0,a:0,pts_s:0,plusminus:-1,shots:3,shot_pct:0,ppt:'0:44',pim:0,hits:0},
+
+{name:'Connor McMichael',pos:'C',ovr:85,gp:2,g:1,a:0,pts_s:1,plusminus:1,shots:3,shot_pct:0.333,ppt:'0:45',pim:0,hits:1},
+
+{name:'Tomas Hertl',pos:'C',ovr:84,gp:2,g:0,a:0,pts_s:0,plusminus:1,shots:0,shot_pct:0,ppt:'1:19',pim:0,hits:2},
+
+{name:'Jake Guentzel',pos:'LW',ovr:88,gp:2,g:0,a:0,pts_s:0,plusminus:0,shots:0,shot_pct:0,ppt:'0:00',pim:0,hits:0},
+
+{name:'Artturi Lehkonen',pos:'LW',ovr:85,gp:2,g:0,a:1,pts_s:1,plusminus:1,shots:1,shot_pct:0,ppt:'1:18',pim:0,hits:1},
+
+{name:'Tyler Bertuzzi',pos:'LW',ovr:84,gp:2,g:0,a:0,pts_s:0,plusminus:-1,shots:0,shot_pct:0,ppt:'0:43',pim:0,hits:2},
+
+{name:'Matt Coronato',pos:'RW',ovr:87,gp:2,g:0,a:0,pts_s:0,plusminus:0,shots:0,shot_pct:0,ppt:'0:00',pim:0,hits:0},
+
+{name:'Bryan Rust',pos:'RW',ovr:86,gp:2,g:0,a:0,pts_s:0,plusminus:-3,shots:1,shot_pct:0,ppt:'3:21',pim:0,hits:0},
+
+{name:'Jordan Eberle',pos:'RW',ovr:85,gp:2,g:0,a:0,pts_s:0,plusminus:-1,shots:6,shot_pct:0,ppt:'2:11',pim:0,hits:1},
+
+{name:'Cale Makar',pos:'D',ovr:97,gp:2,g:0,a:0,pts_s:0,plusminus:0,shots:0,shot_pct:0,ppt:'0:00',pim:0,hits:0},
+
+{name:'Miro Heiskanen',pos:'D',ovr:90,gp:2,g:0,a:0,pts_s:0,plusminus:0,shots:1,shot_pct:0,ppt:'1:16',pim:0,hits:1},
+
+{name:'Noah Hanifin',pos:'D',ovr:87,gp:2,g:0,a:1,pts_s:1,plusminus:-4,shots:1,shot_pct:0,ppt:'2:11',pim:0,hits:4},
+
+{name:'Brett Pesce',pos:'D',ovr:86,gp:2,g:0,a:0,pts_s:0,plusminus:0,shots:1,shot_pct:0,ppt:'0:58',pim:0,hits:0},
+
+{name:'Drew Doughty',pos:'D',ovr:86,gp:2,g:0,a:0,pts_s:0,plusminus:-5,shots:1,shot_pct:0,ppt:'0:45',pim:0,hits:2},
+
+{name:'Samuel Girard',pos:'D',ovr:86,gp:2,g:0,a:0,pts_s:0,plusminus:0,shots:1,shot_pct:0,ppt:'1:13',pim:0,hits:1},
+
+{name:'Jake Oettinger',pos:'G',ovr:93,gp:2,gw:0,gaa:3.01,svp:0.846,sa:25,s:22},
+
+{name:'John Gibson',pos:'G',ovr:86,gp:0,gw:0,gaa:0,svp:0,sa:0,s:0},
+    ]
+  },
+  magic:{
+    lines:[
+      {label:'Line 1',players:['Kirill Kaprizov','Connor McDavid','Alex DeBrincat']},
+      {label:'Line 2',players:['Artemi Panarin','Aleksander Barkov','Jordan Kyrou']},
+      {label:'Line 3',players:['Matias Maccelli','Martin Necas','Tyler Toffoli']},
+      {label:'Line 4',players:['','Quinton Byfield','Owen Tippett']},
+    ],
+    dpairs:[
+      {label:'Pair 1',players:['Adam Fox','Jaccob Slavin']},
+      {label:'Pair 2',players:['MacKenzie Weegar','Vladislav Gavrikov']},
+      {label:'Pair 3',players:['Darnell Nurse','Jake Walman']},
+    ],
+    players:[
+      {name:'Connor McDavid',pos:'C',ovr:98,gp:1,g:0,a:0,pts_s:0,plusminus:1,shots:2,shot_pct:0,ppt:'1:58',pim:0,hits:1},
+      {name:'Aleksander Barkov',pos:'C',ovr:93,gp:1,g:0,a:1,pts_s:1,plusminus:1,shots:0,shot_pct:0,ppt:'1:34',pim:0,hits:0},
+      {name:'Martin Necas',pos:'C',ovr:91,gp:0,g:0,a:0,pts_s:0,plusminus:0,shots:0,shot_pct:0,ppt:'0:00',pim:0,hits:0},
+      {name:'Quinton Byfield',pos:'C',ovr:85,gp:1,g:1,a:0,pts_s:1,plusminus:0,shots:5,shot_pct:0.200,ppt:'0:30',pim:0,hits:1},
+      {name:'Pierre-Luc Dubois',pos:'C',ovr:84,gp:1,g:0,a:1,pts_s:1,plusminus:0,shots:0,shot_pct:0,ppt:'1:19',pim:0,hits:0},
+      {name:'Kirill Kaprizov',pos:'LW',ovr:95,gp:0,g:0,a:0,pts_s:0,plusminus:0,shots:0,shot_pct:0,ppt:'0:00',pim:0,hits:0},
+      {name:'Artemi Panarin',pos:'LW',ovr:89,gp:1,g:0,a:0,pts_s:0,plusminus:0,shots:1,shot_pct:0,ppt:'0:51',pim:0,hits:1},
+      {name:'Matias Maccelli',pos:'LW',ovr:83,gp:1,g:0,a:1,pts_s:1,plusminus:0,shots:1,shot_pct:0,ppt:'0:38',pim:0,hits:0},
+      {name:'Alex DeBrincat',pos:'RW',ovr:86,gp:1,g:1,a:0,pts_s:1,plusminus:0,shots:1,shot_pct:1.000,ppt:'0:24',pim:0,hits:0},
+      {name:'Jordan Kyrou',pos:'RW',ovr:86,gp:1,g:0,a:0,pts_s:0,plusminus:0,shots:1,shot_pct:0,ppt:'1:49',pim:0,hits:2},
+      {name:'Tyler Toffoli',pos:'RW',ovr:85,gp:1,g:0,a:1,pts_s:1,plusminus:0,shots:3,shot_pct:0,ppt:'1:36',pim:0,hits:2},
+      {name:'Owen Tippett',pos:'RW',ovr:84,gp:1,g:1,a:0,pts_s:1,plusminus:0,shots:1,shot_pct:1.000,ppt:'0:29',pim:0,hits:0},
+      {name:'Adam Fox',pos:'D',ovr:90,gp:0,g:0,a:0,pts_s:0,plusminus:0,shots:0,shot_pct:0,ppt:'0:00',pim:0,hits:0},
+      {name:'Jaccob Slavin',pos:'D',ovr:88,gp:0,g:0,a:0,pts_s:0,plusminus:0,shots:0,shot_pct:0,ppt:'0:00',pim:0,hits:0},
+      {name:'MacKenzie Weegar',pos:'D',ovr:85,gp:1,g:0,a:0,pts_s:0,plusminus:-1,shots:0,shot_pct:0,ppt:'0:26',pim:0,hits:1},
+      {name:'Vladislav Gavrikov',pos:'D',ovr:85,gp:0,g:0,a:0,pts_s:0,plusminus:0,shots:0,shot_pct:0,ppt:'0:00',pim:0,hits:0},
+      {name:'Darnell Nurse',pos:'D',ovr:84,gp:1,g:0,a:1,pts_s:1,plusminus:1,shots:0,shot_pct:0,ppt:'0:38',pim:0,hits:1},
+      {name:'Jake Walman',pos:'D',ovr:84,gp:0,g:0,a:0,pts_s:0,plusminus:0,shots:0,shot_pct:0,ppt:'0:00',pim:0,hits:0},
+      {name:'Andrei Vasilevskiy',pos:'G',ovr:92,gp:1,gw:1,gaa:1.86,svp:0.900,sa:20,s:18},
+      {name:'Jordan Binnington',pos:'G',ovr:84,gp:0,gw:0,gaa:0,svp:0,sa:0,s:0},
+    ]
+  },
+  notes:{
+    lines:[
+      {label:'Line 1',players:['Matthew Boldy','Robert Thomas','Matvei Michkov']},
+      {label:'Line 2',players:['Anton Frondell','John Tavares','Sam Reinhart']},
+      {label:'Line 3',players:['','Mika Zibanejad','Mark Stone']},
+      {label:'Line 4',players:['','Kent Johnson','Kirill Marchenko']},
+    ],
+    dpairs:[
+      {label:'Pair 1',players:['James Beck','Aaron Ekblad']},
+      {label:'Pair 2',players:['Thomas Chabot','Ivan Provorov']},
+      {label:'Pair 3',players:['Cam York','Nils Lundkvist']},
+    ],
+    players:[
+{name:'Matvei Michkov',pos:'RW',ovr:93,gp:2,g:2,a:1,pts_s:3,plusminus:3,shots:9,shot_pct:0.222,ppt:'2:46',pim:0,hits:2},
+{name:'Sam Reinhart',pos:'RW',ovr:92,gp:2,g:0,a:1,pts_s:1,plusminus:3,shots:3,shot_pct:0,ppt:'3:17',pim:0,hits:5},
+{name:'Mark Stone',pos:'RW',ovr:88,gp:2,g:0,a:0,pts_s:0,plusminus:1,shots:2,shot_pct:0,ppt:'0:52',pim:0,hits:4},
+{name:'Kirill Marchenko',pos:'RW',ovr:86,gp:2,g:0,a:0,pts_s:0,plusminus:0,shots:0,shot_pct:0,ppt:'0:00',pim:0,hits:0},
+
+{name:'Robert Thomas',pos:'C',ovr:91,gp:2,g:0,a:2,pts_s:2,plusminus:3,shots:3,shot_pct:0,ppt:'3:43',pim:0,hits:2},
+{name:'John Tavares',pos:'C',ovr:87,gp:2,g:0,a:0,pts_s:0,plusminus:1,shots:6,shot_pct:0,ppt:'3:44',pim:0,hits:2},
+{name:'Mika Zibanejad',pos:'C',ovr:86,gp:2,g:0,a:0,pts_s:0,plusminus:0,shots:0,shot_pct:0,ppt:'0:23',pim:0,hits:0},
+{name:'Kent Johnson',pos:'C',ovr:86,gp:2,g:0,a:0,pts_s:0,plusminus:0,shots:0,shot_pct:0,ppt:'0:00',pim:0,hits:0},
+{name:'Phillip Danault',pos:'C',ovr:84,gp:2,g:0,a:0,pts_s:0,plusminus:1,shots:0,shot_pct:0,ppt:'0:11',pim:0,hits:0},
+
+{name:'Matthew Boldy',pos:'LW',ovr:90,gp:2,g:0,a:2,pts_s:2,plusminus:1,shots:5,shot_pct:0,ppt:'2:26',pim:0,hits:4},
+{name:'Anton Frondell',pos:'LW',ovr:89,gp:2,g:0,a:1,pts_s:1,plusminus:1,shots:1,shot_pct:0,ppt:'1:04',pim:0,hits:2},
+
+{name:'James Beck',pos:'D',ovr:89,gp:2,g:0,a:0,pts_s:0,plusminus:0,shots:0,shot_pct:0,ppt:'0:00',pim:0,hits:0},
+{name:'Aaron Ekblad',pos:'D',ovr:86,gp:2,g:2,a:1,pts_s:3,plusminus:3,shots:3,shot_pct:0.667,ppt:'1:36',pim:0,hits:3},
+{name:'Thomas Chabot',pos:'D',ovr:86,gp:2,g:0,a:1,pts_s:1,plusminus:2,shots:2,shot_pct:0,ppt:'4:16',pim:0,hits:6},
+{name:'Ivan Provorov',pos:'D',ovr:85,gp:2,g:1,a:0,pts_s:1,plusminus:3,shots:2,shot_pct:0.5,ppt:'1:14',pim:0,hits:2},
+{name:'Cam York',pos:'D',ovr:84,gp:2,g:0,a:0,pts_s:0,plusminus:0,shots:0,shot_pct:0,ppt:'0:00',pim:0,hits:0},
+{name:'Nils Lundkvist',pos:'D',ovr:79,gp:2,g:0,a:0,pts_s:0,plusminus:0,shots:0,shot_pct:0,ppt:'0:00',pim:0,hits:0},
+
+{name:'Juuse Saros',pos:'G',ovr:88,gp:2,gw:2,gaa:0.00,svp:1.000,sa:29,s:29},
+{name:'Darcy Kuemper',pos:'G',ovr:85,gp:0,gw:0,gaa:0,svp:0,sa:0,s:0},
+    ]
+  },
+  ghostpirates:{
+    lines:[
+      {label:'Line 1',players:['Gabriel Landeskog','Vincent Trocheck','Jesper Bratt']},
+      {label:'Line 2',players:['Zach Hyman','Callum McCarthy','Gabe Perreault']},
+      {label:'Line 3',players:['Nick Paul','Gabe Vilardi','Ben Clarke']},
+      {label:'Line 4',players:['','','']},
+    ],
+    dpairs:[
+      {label:'Pair 1',players:['John Carlson','Morgan Rielly']},
+      {label:'Pair 2',players:['Adam Pelech','']},
+      {label:'Pair 3',players:['','']},
+    ],
+    players:[
+{name:'Jesper Bratt',pos:'RW',ovr:88,gp:2,g:2,a:1,pts_s:3,plusminus:2,shots:5,shot_pct:0.4,ppt:'6:14',pim:1,hits:2},
+{name:'Gabe Perreault',pos:'RW',ovr:85,gp:2,g:0,a:2,pts_s:2,plusminus:2,shots:3,shot_pct:0,ppt:'3:20',pim:1,hits:5},
+{name:'Callum McCarthy',pos:'RW',ovr:83,gp:2,g:2,a:0,pts_s:2,plusminus:2,shots:4,shot_pct:0.5,ppt:'1:24',pim:2,hits:2},
+{name:'Gabe Vilardi',pos:'RW',ovr:83,gp:2,g:1,a:0,pts_s:1,plusminus:1,shots:4,shot_pct:0.25,ppt:'2:00',pim:1,hits:0},
+{name:'Gabriel Landeskog',pos:'LW',ovr:86,gp:2,g:0,a:2,pts_s:2,plusminus:2,shots:1,shot_pct:0,ppt:'0:48',pim:6,hits:1},
+{name:'Zach Hyman',pos:'LW',ovr:84,gp:2,g:0,a:0,pts_s:0,plusminus:0,shots:2,shot_pct:0,ppt:'1:22',pim:2,hits:2},
+{name:'Nick Paul',pos:'LW',ovr:82,gp:2,g:0,a:1,pts_s:1,plusminus:0,shots:0,shot_pct:0,ppt:'0:49',pim:4,hits:2},
+{name:'Ben Clarke',pos:'LW',ovr:80,gp:2,g:0,a:0,pts_s:0,plusminus:0,shots:3,shot_pct:0,ppt:'1:32',pim:3,hits:3},
+{name:'Vincent Trocheck',pos:'C',ovr:85,gp:2,g:0,a:0,pts_s:0,plusminus:0,shots:6,shot_pct:0,ppt:'2:42',pim:1,hits:1},
+{name:'Matty Beniers',pos:'C',ovr:85,gp:2,g:1,a:0,pts_s:1,plusminus:0,shots:1,shot_pct:1.0,ppt:'0:40',pim:0,hits:0},
+{name:'Benjamin Kindel',pos:'C',ovr:84,gp:2,g:0,a:1,pts_s:1,plusminus:1,shots:0,shot_pct:0,ppt:'0:54',pim:0,hits:0},
+{name:'Josh Doan',pos:'RW',ovr:84,gp:2,g:0,a:1,pts_s:1,plusminus:1,shots:1,shot_pct:0,ppt:'0:10',pim:0,hits:0},
+{name:'Pavol Regenda',pos:'LW',ovr:78,gp:2,g:0,a:0,pts_s:0,plusminus:0,shots:0,shot_pct:0,ppt:'0:00',pim:0,hits:0},
+
+{name:'John Carlson',pos:'D',ovr:83,gp:2,g:0,a:0,pts_s:0,plusminus:2,shots:0,shot_pct:0,ppt:'2:14',pim:1,hits:3},
+{name:'Morgan Rielly',pos:'D',ovr:83,gp:2,g:0,a:0,pts_s:0,plusminus:0,shots:6,shot_pct:0,ppt:'2:26',pim:2,hits:2},
+{name:'Adam Pelech',pos:'D',ovr:83,gp:2,g:0,a:0,pts_s:0,plusminus:-2,shots:4,shot_pct:0,ppt:'4:12',pim:0,hits:0},
+{name:'Luke Hughes',pos:'D',ovr:86,gp:2,g:0,a:1,pts_s:1,plusminus:1,shots:0,shot_pct:0,ppt:'1:55',pim:0,hits:1},
+{name:'Brandt Clarke',pos:'D',ovr:86,gp:2,g:0,a:1,pts_s:1,plusminus:1,shots:0,shot_pct:0,ppt:'0:54',pim:0,hits:3},
+
+{name:'Edwin Eltridge',pos:'C',ovr:88,gp:2,g:1,a:0,pts_s:1,plusminus:0,shots:1,shot_pct:1.0,ppt:'1:09',pim:0,hits:5},
+
+{name:'Spencer Knight',pos:'G',ovr:83,gp:2,gw:2,gaa:1.48,svp:0.923,sa:35,s:32},
+{name:'Joseph Woll',pos:'G',ovr:82,gp:0,gw:0,gaa:0,svp:0,sa:0,s:0},
+    ]
+  },
+  rams:{
+    lines:[
+      {label:'Line 1',players:['Timo Meier','Auston Matthews','Travis Konecny']},
+      {label:'Line 2',players:['Trevor Zegras','Joel Eriksson Ek','Conor Garland']},
+      {label:'Line 3',players:['','Johnathan Norris','']},
+      {label:'Line 4',players:['','Ryan McLeod','']},
+    ],
+    dpairs:[
+      {label:'Pair 1',players:['Moritz Seider','Kurtis Guhle']},
+      {label:'Pair 2',players:['Zach Whitecloud','Dylan Mateychuk']},
+      {label:'Pair 3',players:['','']},
+    ],
+    players:[
+{name:'Vyacheslav Novikov',pos:'LW',ovr:92,gp:2,g:0,a:2,pts_s:2,plusminus:0,shots:1,shot_pct:0,ppt:'3:00',pim:4,hits:3},
+{name:'William Beach',pos:'LW',ovr:85,gp:2,g:2,a:0,pts_s:2,plusminus:0,shots:2,shot_pct:1.000,ppt:'1:23',pim:0,hits:2},
+
+{name:'Travis Konecny',pos:'RW',ovr:87,gp:2,g:0,a:1,pts_s:1,plusminus:-2,shots:7,shot_pct:0,ppt:'4:09',pim:2,hits:5},
+{name:'Timo Meier',pos:'LW',ovr:87,gp:2,g:1,a:0,pts_s:1,plusminus:0,shots:4,shot_pct:0.250,ppt:'4:09',pim:0,hits:4},
+{name:'Conor Garland',pos:'RW',ovr:83,gp:2,g:0,a:0,pts_s:0,plusminus:0,shots:1,shot_pct:0,ppt:'0:28',pim:0,hits:2},
+
+{name:'Joel Eriksson Ek',pos:'C',ovr:86,gp:2,g:0,a:0,pts_s:0,plusminus:0,shots:1,shot_pct:0,ppt:'1:38',pim:0,hits:3},
+{name:'Auston Matthews',pos:'C',ovr:95,gp:2,g:0,a:0,pts_s:0,plusminus:0,shots:3,shot_pct:0,ppt:'3:00',pim:0,hits:4},
+{name:'Ryan McLeod',pos:'C',ovr:82,gp:2,g:0,a:0,pts_s:0,plusminus:0,shots:0,shot_pct:0,ppt:'0:02',pim:0,hits:0},
+{name:'Trevor Zegras',pos:'C',ovr:85,gp:2,g:0,a:0,pts_s:0,plusminus:0,shots:0,shot_pct:0,ppt:'0:36',pim:0,hits:3},
+{name:'Josh Norris',pos:'C',ovr:85,gp:2,g:0,a:0,pts_s:0,plusminus:0,shots:0,shot_pct:0,ppt:'0:37',pim:0,hits:1},
+{name:'Leo Carlsson',pos:'C',ovr:89,gp:2,g:0,a:2,pts_s:2,plusminus:0,shots:1,shot_pct:0,ppt:'0:51',pim:0,hits:0},
+
+{name:'Moritz Seider',pos:'D',ovr:87,gp:2,g:0,a:0,pts_s:0,plusminus:-2,shots:0,shot_pct:0,ppt:'0:39',pim:0,hits:2},
+{name:'Kaiden Guhle',pos:'D',ovr:86,gp:2,g:0,a:0,pts_s:0,plusminus:-1,shots:1,shot_pct:0,ppt:'2:42',pim:0,hits:4},
+{name:'Zach Whitecloud',pos:'D',ovr:82,gp:2,g:0,a:0,pts_s:0,plusminus:-1,shots:0,shot_pct:0,ppt:'1:05',pim:0,hits:4},
+{name:'Denton Mateychuk',pos:'D',ovr:84,gp:2,g:0,a:0,pts_s:0,plusminus:-1,shots:0,shot_pct:0,ppt:'0:23',pim:0,hits:2},
+
+{name:'Jesper Wallstedt',pos:'G',ovr:87,gp:2,gw:1,gaa:3.27,svp:0.844,sa:34,s:29},
+{name:'Anthony Stolarz',pos:'G',ovr:84,gp:1,gw:0,gaa:4.53,svp:0.750,sa:8,s:6},
+    ]
+  },
+
+
+pirates:{
+  lines:[
+    {label:'Line 1',players:['Quentin Musty','Elias Pettersson','Nikita Kucherov']},
+    {label:'Line 2',players:['Zach Benson','Jared McCann','Cole Caufield']},
+    {label:'Line 3',players:['William Eklund','Yanni Gourde','Evander Kane']},
+    {label:'Line 4',players:['Dmitri Voronkov','William Karlsson','Frank Nazar']},
+  ],
+
+  dpairs:[
+    {label:'Pair 1',players:['Rasmus Dahlin','Vince Dunn']},
+    {label:'Pair 2',players:['Braden Schneider','Darren Raddysh']},
+    {label:'Pair 3',players:['Nikita Zadorov','Philip Broberg']},
+  ],
+
+  players:[
+    {name:'Nikita Kucherov',pos:'RW',ovr:95,gp:1,g:0,a:1,pts_s:1,plusminus:-1,shots:1,shot_pct:0,ppt:'2:40',pim:0,hits:1},
+    {name:'Elias Pettersson',pos:'C',ovr:89,gp:1,g:0,a:1,pts_s:1,plusminus:-2,shots:1,shot_pct:0,ppt:'1:40',pim:0,hits:1},
+    {name:'Quentin Musty',pos:'LW',ovr:90,gp:1,g:1,a:0,pts_s:1,plusminus:-3,shots:2,shot_pct:0.500,ppt:'1:49',pim:0,hits:1},
+    {name:'Evander Kane',pos:'LW',ovr:83,gp:1,g:0,a:0,pts_s:0,plusminus:-1,shots:0,shot_pct:0,ppt:'0:42',pim:0,hits:3},
+    {name:'Yanni Gourde',pos:'C',ovr:84,gp:1,g:0,a:0,pts_s:0,plusminus:-2,shots:0,shot_pct:0,ppt:'0:43',pim:0,hits:1},
+    {name:'Nikita Zadorov',pos:'D',ovr:84,gp:1,g:0,a:0,pts_s:0,plusminus:-2,shots:0,shot_pct:0,ppt:'0:37',pim:0,hits:1},
+    {name:'Jared McCann',pos:'C',ovr:86,gp:1,g:0,a:0,pts_s:0,plusminus:0,shots:2,shot_pct:0,ppt:'1:33',pim:0,hits:0},
+    {name:'Darren Raddysh',pos:'D',ovr:86,gp:1,g:0,a:0,pts_s:0,plusminus:-1,shots:0,shot_pct:0,ppt:'0:54',pim:0,hits:1},
+    {name:'Vince Dunn',pos:'D',ovr:87,gp:1,g:0,a:0,pts_s:0,plusminus:-2,shots:0,shot_pct:0,ppt:'0:39',pim:0,hits:0},
+    {name:'Rasmus Dahlin',pos:'D',ovr:93,gp:1,g:0,a:0,pts_s:0,plusminus:-1,shots:0,shot_pct:0,ppt:'0:47',pim:0,hits:1},
+    {name:'Braden Schneider',pos:'D',ovr:86,gp:1,g:0,a:0,pts_s:0,plusminus:0,shots:0,shot_pct:0,ppt:'0:41',pim:0,hits:1},
+    {name:'Philip Broberg',pos:'D',ovr:84,gp:1,g:0,a:0,pts_s:0,plusminus:-3,shots:0,shot_pct:0,ppt:'0:33',pim:0,hits:2},
+
+    {name:'Zach Benson',pos:'LW',ovr:87,gp:1,g:0,a:0,pts_s:0,plusminus:0,shots:0,shot_pct:0,ppt:'0:00',pim:0,hits:0},
+    {name:'William Eklund',pos:'LW',ovr:86,gp:1,g:0,a:0,pts_s:0,plusminus:0,shots:0,shot_pct:0,ppt:'0:00',pim:0,hits:0},
+    {name:'Dmitri Voronkov',pos:'LW',ovr:85,gp:1,g:0,a:0,pts_s:0,plusminus:0,shots:0,shot_pct:0,ppt:'0:00',pim:0,hits:0},
+    {name:'William Karlsson',pos:'C',ovr:84,gp:1,g:0,a:0,pts_s:0,plusminus:0,shots:0,shot_pct:0,ppt:'0:00',pim:0,hits:0},
+    {name:'Frank Nazar',pos:'C',ovr:84,gp:1,g:0,a:0,pts_s:0,plusminus:0,shots:0,shot_pct:0,ppt:'0:00',pim:0,hits:0},
+    {name:'Marco Kasper',pos:'C',ovr:82,gp:1,g:0,a:0,pts_s:0,plusminus:0,shots:0,shot_pct:0,ppt:'0:00',pim:0,hits:0},
+    {name:'Cole Caufield',pos:'RW',ovr:90,gp:1,g:0,a:0,pts_s:0,plusminus:0,shots:0,shot_pct:0,ppt:'0:00',pim:0,hits:0},
+
+    {name:"Gabriel D'Aigle",pos:'G',ovr:88,gp:1,gw:0,gaa:5.37,svp:0.700,sa:10,s:7},
+    {name:'Linus Ullmark',pos:'G',ovr:85,gp:1,gw:0,gaa:6.81,svp:0.750,sa:12,s:9},
+  ]
+},
+
+  longhorns:{
+    lines:[
+      {label:'Line 1',players:['B. Boeser','A. Kempe','M. Geekie']},
+      {label:'Line 2',players:['F. Forsberg','L. Draisaitl','M. Zuccarello']},
+      {label:'Line 3',players:['M. McTavish','','']},
+      {label:'Line 4',players:['A. Wennberg','','']},
+    ],
+    dpairs:[
+      {label:'Pair 1',players:['D. Hamilton','M. Ekholm']},
+      {label:'Pair 2',players:['J. Faulk','']},
+      {label:'Pair 3',players:['J. Spurgeon','']},
+    ],
+    players:[
+      // Stats from Images 1-3 (Dallas Longhorns won — Kempe 2g, Geekie 2a, Hamilton 1a, Ekholm 1a, Boeser 1g1a, McTavish 1a; Sorokin 17SA 16S .941 1GAA)
+{name:'Adrian Kempe',pos:'C',ovr:88,gp:2,g:3,a:0,pts_s:3,plusminus:3,shots:6,shot_pct:0.500,ppt:'6:09',pim:0,hits:2},
+
+{name:'Morgan Geekie',pos:'C',ovr:83,gp:2,g:1,a:2,pts_s:3,plusminus:2,shots:4,shot_pct:0.250,ppt:'1:16',pim:0,hits:0},
+
+{name:'Dougie Hamilton',pos:'D',ovr:87,gp:2,g:0,a:1,pts_s:1,plusminus:4,shots:1,shot_pct:0,ppt:'1:29',pim:0,hits:6},
+
+{name:'Mattias Ekholm',pos:'D',ovr:87,gp:2,g:0,a:3,pts_s:3,plusminus:5,shots:0,shot_pct:0,ppt:'2:18',pim:0,hits:1},
+
+{name:'Brock Boeser',pos:'RW',ovr:85,gp:2,g:1,a:0,pts_s:1,plusminus:1,shots:1,shot_pct:1.000,ppt:'0:43',pim:0,hits:0},
+
+{name:'Mason McTavish',pos:'C',ovr:84,gp:2,g:0,a:3,pts_s:3,plusminus:3,shots:3,shot_pct:0,ppt:'1:12',pim:0,hits:1},
+
+{name:'Mats Zuccarello',pos:'RW',ovr:83,gp:2,g:0,a:0,pts_s:0,plusminus:1,shots:1,shot_pct:0,ppt:'3:05',pim:0,hits:1},
+
+{name:'Filip Forsberg',pos:'LW',ovr:86,gp:2,g:1,a:0,pts_s:1,plusminus:1,shots:5,shot_pct:0.200,ppt:'3:25',pim:0,hits:5},
+
+{name:'Leon Draisaitl',pos:'C',ovr:90,gp:2,g:2,a:0,pts_s:2,plusminus:0,shots:4,shot_pct:0.500,ppt:'3:23',pim:0,hits:3},
+
+{name:'Justin Faulk',pos:'D',ovr:84,gp:2,g:0,a:0,pts_s:0,plusminus:0,shots:0,shot_pct:0,ppt:'0:00',pim:0,hits:1},
+
+{name:'Jared Spurgeon',pos:'D',ovr:83,gp:2,g:0,a:0,pts_s:0,plusminus:-1,shots:0,shot_pct:0,ppt:'0:11',pim:0,hits:0},
+
+{name:'Alexander Wennberg',pos:'C',ovr:81,gp:2,g:0,a:0,pts_s:0,plusminus:0,shots:2,shot_pct:0,ppt:'1:49',pim:0,hits:0},
+
+{name:'Jonathan Toews',pos:'C',ovr:84,gp:2,g:1,a:1,pts_s:2,plusminus:3,shots:1,shot_pct:1.000,ppt:'1:03',pim:0,hits:1},
+
+{name:'Brady Tkachuk',pos:'LW',ovr:92,gp:2,g:0,a:2,pts_s:2,plusminus:0,shots:0,shot_pct:0,ppt:'1:47',pim:0,hits:10},
+
+{name:'Rasmus Andersson',pos:'D',ovr:86,gp:2,g:0,a:1,pts_s:1,plusminus:2,shots:0,shot_pct:0,ppt:'0:43',pim:0,hits:2},
+
+{name:'Ilya Sorokin',pos:'G',ovr:91,gp:2,gw:0,gaa:1.93,svp:0.897,sa:39,s:35},
+
+{name:'Pyotr Kochetkov',pos:'G',ovr:84,gp:0,gw:0,gaa:0,svp:0,sa:0,s:0},
+    ]
+  },
 };
 
+function ovrColor(ovr){
+  if(ovr>=95) return '#F5C518';
+  if(ovr>=90) return '#43A047';
+  return 'var(--text)';
+}
+function gdClass(gd){
+  if(gd>0) return 'gd-pos';
+  if(gd<0) return 'gd-neg';
+  return 'gd-zero';
+}
+function gdStr(gd){
+  if(gd>0) return '+'+gd;
+  return String(gd);
+}
 function showPage(id){
   document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
   document.querySelectorAll('.nav-link').forEach(n=>n.classList.remove('active'));
@@ -379,39 +1022,104 @@ function showTeamsList(){
   document.getElementById('rosters-teams-view').style.display='block';
   document.getElementById('roster-detail-view').style.display='none';
 }
-function showAdminPanel(){
-  document.getElementById('admin-login-view').style.display='none';
-  document.getElementById('admin-panel-view').style.display='block';
-}
 function teamCard(t){
-  return '<div class="team-card" style="border-left-color:'+t.color+';" onclick="showPage(\'rosters\');showTeam(\''+t.id+'\')"><div class="team-card-name" style="color:'+t.color+'">'+t.name+'</div><div class="team-card-city">'+t.city+' &middot; '+t.conf+'</div><div class="team-card-stats"><div class="team-card-stat"><strong>0-0-0</strong>Record</div><div class="team-card-stat"><strong>0</strong>PTS</div></div></div>';
+  const gp=t.w+t.l+t.otl;
+  const rec=t.w+'-'+t.l+'-'+t.otl;
+  return '<div class="team-card" style="border-left-color:'+t.color+';" onclick="showPage(\'rosters\');showTeam(\''+t.id+'\')"><div class="team-card-name" style="color:'+t.color+'">'+t.name+'</div><div class="team-card-city">'+t.city+' &middot; '+t.conf+' &middot; OVR '+t.ovr+'</div><div class="team-card-stats"><div class="team-card-stat"><strong>'+rec+'</strong>Record</div><div class="team-card-stat"><strong>'+t.pts+'</strong>PTS</div><div class="team-card-stat"><strong class="'+gdClass(t.gd)+'">'+gdStr(t.gd)+'</strong>GD</div></div></div>';
 }
 function confRow(t){
-  return '<div style="display:flex;align-items:center;gap:8px;"><div style="width:3px;height:16px;background:'+t.color+';border-radius:2px;flex-shrink:0;"></div><span style="font-family:var(--font-display);font-size:0.85rem;font-weight:700;text-transform:uppercase;letter-spacing:0.03em;">'+t.city+' '+t.name+'</span></div>';
+  return '<div style="display:flex;align-items:center;gap:8px;"><div style="width:3px;height:16px;background:'+t.color+';border-radius:2px;flex-shrink:0;"></div><span style="font-family:var(--font-display);font-size:0.82rem;font-weight:700;text-transform:uppercase;letter-spacing:0.03em;">'+t.city+' '+t.name+'</span><span style="margin-left:auto;font-family:var(--font-display);font-size:0.75rem;font-weight:700;color:var(--text-dim);">'+t.pts+' pts</span></div>';
 }
 function renderAll(){
   const east=TEAMS.filter(t=>t.conf==='East');
   const west=TEAMS.filter(t=>t.conf==='West');
+  const sortConf=arr=>[...arr].sort((a,b)=>b.pts-a.pts||b.gd-a.gd);
   const cards=TEAMS.map(teamCard).join('');
   document.getElementById('home-teams-grid').innerHTML=cards;
   document.getElementById('rosters-teams-grid').innerHTML=cards;
-  document.getElementById('home-east-top').innerHTML=east.map(confRow).join('');
-  document.getElementById('home-west-top').innerHTML=west.map(confRow).join('');
-  const tbl=teams=>'<table class="standings-table"><thead><tr><th>Team</th><th>GP</th><th>W</th><th>L</th><th>OTL</th><th>PTS</th><th>GD</th></tr></thead><tbody>'+teams.map((t,i)=>'<tr onclick="showPage(\'rosters\');showTeam(\''+t.id+'\')"><td><div class="team-cell"><div class="team-swatch" style="background:'+t.color+'"></div><div class="team-rank">'+(i+1)+'</div><div><div class="team-name-cell">'+t.name+'</div><div class="team-city-cell">'+t.city+'</div></div></div></td><td>0</td><td>0</td><td>0</td><td>0</td><td class="pts-cell">0</td><td style="color:var(--text-dim)">—</td></tr>').join('')+'</tbody></table>';
-  document.getElementById('standings-content').innerHTML='<div class="conf-block"><div class="conf-title">Eastern Conference</div>'+tbl(east)+'</div><div class="conf-block"><div class="conf-title">Western Conference</div>'+tbl(west)+'</div>';
+  document.getElementById('home-east-top').innerHTML=sortConf(east).map(confRow).join('');
+  document.getElementById('home-west-top').innerHTML=sortConf(west).map(confRow).join('');
+  const tbl=teams=>{
+    const sorted=sortConf(teams);
+    return '<table class="standings-table"><thead><tr><th>Team</th><th>OVR</th><th>GP</th><th>W</th><th>L</th><th>OTL</th><th>PTS</th><th>GD</th></tr></thead><tbody>'+sorted.map((t,i)=>{
+      const gd=gdStr(t.gd);
+      const gdCl=gdClass(t.gd);
+      return '<tr onclick="showPage(\'rosters\');showTeam(\''+t.id+'\')"><td><div class="team-cell"><div class="team-swatch" style="background:'+t.color+'"></div><div class="team-rank">'+(i+1)+'</div><div><div class="team-name-cell">'+t.name+'</div><div class="team-city-cell">'+t.city+'</div></div></div></td><td style="font-family:var(--font-display);font-weight:700;color:'+ovrColor(t.ovr)+'">'+t.ovr+'</td><td>'+(t.w+t.l+t.otl)+'</td><td>'+t.w+'</td><td>'+t.l+'</td><td>'+t.otl+'</td><td class="pts-cell">'+t.pts+'</td><td class="'+gdCl+'">'+gd+'</td></tr>';
+    }).join('')+'</tbody></table>';
+  };
+  document.getElementById('standings-content').innerHTML='<div><div class="conf-title">Eastern Conference</div>'+tbl(east)+'</div><div><div class="conf-title">Western Conference</div>'+tbl(west)+'</div>';
+  renderStats();
+}
+function renderStats(){
+  const sections = TEAMS.map(team=>{
+    const roster = ROSTERS[team.id] || {players:[]};
+    const skaters = roster.players.filter(p=>p.pos!=='G');
+    const goalies = roster.players.filter(p=>p.pos==='G');
+    const skaterRows = skaters.map(p=>{
+      const pts = p.pts_s!=null? p.pts_s : ((p.g||0)+(p.a||0));
+      const plus = p.plusminus!=null? p.plusminus : 0;
+      const shots = p.shots!=null? p.shots : 0;
+      const shotPct = p.shot_pct!=null ? (p.shot_pct===1 ? '100.0%' : (Math.round(p.shot_pct*1000)/10)+'%') : '0.0%';
+      const ppt = p.ppt!=null? p.ppt : '00:00';
+      const pim = p.pim!=null? p.pim : 0;
+      const hits = p.hits!=null? p.hits : 0;
+      return '<tr><td class="player-name">'+p.name+'</td><td class="center">'+p.pos+'</td><td class="center">'+(p.gp||0)+'</td><td class="center">'+(p.g||0)+'</td><td class="center">'+(p.a||0)+'</td><td class="center">'+pts+'</td><td class="center">'+plus+'</td><td class="center">'+shots+'</td><td class="center">'+shotPct+'</td><td class="center">'+ppt+'</td><td class="center">'+pim+'</td><td class="center">'+hits+'</td></tr>';
+    }).join('');
+    const goalieRows = goalies.map(p=>{
+      const gp = p.gp||0;
+      const sa = p.sa!=null? p.sa : 0;
+      const s = p.s!=null? p.s : 0;
+      const svp = p.svp!=null ? (p.svp===1 ? '1.000' : (p.svp>0 ? '.'+String(Math.round(p.svp*1000)).padStart(3,'0') : '.000')) : '.000';
+      const ga = p.gaa!=null ? p.gaa.toFixed(2) : '0.00';
+      const gaa = p.gaa!=null ? p.gaa.toFixed(2) : '0.00';
+      const pim = p.pim!=null? p.pim : 0;
+      const g = p.g||0;
+      const a = p.a||0;
+      const pts = p.pts_s!=null? p.pts_s : (g+a);
+      return '<tr><td class="player-name">'+p.name+'</td><td class="center">'+gp+'</td><td class="center">'+sa+'</td><td class="center">'+s+'</td><td class="center">'+svp+'</td><td class="center">'+ga+'</td><td class="center">'+gaa+'</td><td class="center">0</td><td class="center">'+pim+'</td><td class="center">'+g+'</td><td class="center">'+a+'</td><td class="center">'+pts+'</td></tr>';
+    }).join('');
+    return '<div style="background:var(--card);border:1px solid var(--border);border-radius:10px;overflow:hidden;">' +
+      '<div style="padding:1rem 1.25rem;background:rgba(255,255,255,0.05);display:flex;align-items:center;gap:0.75rem;font-family:var(--font-display);font-weight:800;letter-spacing:0.08em;text-transform:uppercase;color:var(--text);">' +
+      '<span style="width:10px;height:10px;background:'+team.color+';border-radius:50%;display:inline-block;"></span>' +
+      '<span>'+team.city+' '+team.name+' Stats</span></div>' +
+      '<div style="padding:1rem;display:grid;gap:1.5rem;">' +
+      '<div><div style="font-family:var(--font-display);font-size:0.75rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--text-muted);margin-bottom:0.75rem;">All Skaters</div>' +
+      '<table class="roster-table" style="min-width:100%;"><thead><tr><th>Player</th><th class="center">POS</th><th class="center">GP</th><th class="center">G</th><th class="center">A</th><th class="center">PTS</th><th class="center">+/-</th><th class="center">S</th><th class="center">S%</th><th class="center">PPT</th><th class="center">PIM</th><th class="center">HITS</th></tr></thead><tbody>'+skaterRows+'</tbody></table></div>' +
+      '<div><div style="font-family:var(--font-display);font-size:0.75rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--text-muted);margin-bottom:0.75rem;">Goalies</div>' +
+      '<table class="roster-table" style="min-width:100%;"><thead><tr><th>Player</th><th class="center">GP</th><th class="center">SA</th><th class="center">S</th><th class="center">SV%</th><th class="center">GA</th><th class="center">GAA</th><th class="center">ENG</th><th class="center">PIM</th><th class="center">G</th><th class="center">A</th><th class="center">PTS</th></tr></thead><tbody>'+goalieRows+'</tbody></table></div>' +
+      '</div></div>';
+  });
+  document.getElementById('stats-content').innerHTML = sections.join('');
 }
 function showTeam(id){
   const t=TEAMS.find(x=>x.id===id);
   const r=ROSTERS[id]||{lines:[],dpairs:[],players:[],note:'Roster coming soon'};
   const lineGrid=(groups,title,cols)=>{
     if(!groups||!groups.length) return '';
-    return '<div style="margin-bottom:2rem;"><div class="lines-title">'+title+'</div><div style="display:grid;grid-template-columns:repeat('+cols+',1fr);gap:0.85rem;">'+groups.map(g=>'<div><div class="line-label">'+g.label+'</div>'+g.players.map(p=>'<div class="line-player"><strong>'+p+'</strong></div>').join('')+'</div>').join('')+'</div></div>';
+    return '<div style="margin-bottom:2rem;"><div class="lines-title">'+title+'</div><div style="display:grid;grid-template-columns:repeat('+cols+',1fr);gap:0.85rem;">'+groups.map(g=>'<div><div class="line-label">'+g.label+'</div>'+g.players.filter(p=>p).map(p=>'<div class="line-player"><strong>'+p+'</strong></div>').join('')+'</div>').join('')+'</div></div>';
   };
   const rosterSection=r.players&&r.players.length
-    ?'<div style="margin-bottom:2rem;"><div class="lines-title">Full Roster</div><table class="roster-table"><thead><tr><th>Player</th><th class="center">POS</th><th class="center">OVR</th><th>Notes</th></tr></thead><tbody>'+r.players.map(p=>'<tr><td class="player-name">'+p.name+'</td><td class="center"><span class="pos-badge">'+p.pos+'</span></td><td class="center ovr-cell">'+(p.ovr>0?p.ovr:'—')+'</td><td style="font-size:0.78rem;color:var(--text-dim);">'+p.note+'</td></tr>').join('')+'</tbody></table></div>'
+    ?'<div style="margin-bottom:2rem;"><div class="lines-title">Full Roster</div><table class="roster-table"><thead><tr><th>Player</th><th class="center">POS</th><th class="center">OVR</th><th class="center">GP</th><th class="center">G</th><th class="center">A</th><th class="center">PTS</th><th class="center">+/-</th><th class="center">S</th><th class="center">HITS</th></tr></thead><tbody>'+r.players.map(p=>{
+      const isG=p.pos==='G';
+      const gp=p.gp||0;
+      let statCols;
+      if(isG){
+        const gaa=(gp>0&&p.gaa!=null)?p.gaa.toFixed(2):'—';
+        const svp=(gp>0&&p.svp!=null&&p.svp>0)?(p.svp===1?'1.000':'.'+String(Math.round(p.svp*1000)).padStart(3,'0')):'—';
+        const sa=p.sa!=null?p.sa:0;
+        statCols='<td class="center" style="color:var(--text-dim);">'+gp+'</td><td class="center" style="color:var(--text-dim);" colspan="2">GAA: '+gaa+'</td><td class="center" style="color:var(--text-dim);" colspan="2">SV%: '+svp+'</td><td class="center" style="color:var(--text-dim);">'+sa+' SA</td><td class="center">—</td>';
+      } else {
+        const g=p.g||0; const a=p.a||0; const pts=(p.pts_s!=null?p.pts_s:g+a);
+        const pm=p.plusminus!=null?p.plusminus:'—';
+        const shots=p.shots!=null?p.shots:0;
+        const hits=p.hits!=null?p.hits:0;
+        statCols='<td class="center" style="color:var(--text-dim);">'+gp+'</td><td class="center" style="color:var(--text-dim);">'+g+'</td><td class="center" style="color:var(--text-dim);">'+a+'</td><td class="center" style="font-weight:700;color:var(--text);">'+pts+'</td><td class="center" style="color:var(--text-dim);">'+pm+'</td><td class="center" style="color:var(--text-dim);">'+shots+'</td><td class="center" style="color:var(--text-dim);">'+hits+'</td>';
+      }
+      return '<tr><td class="player-name">'+p.name+'</td><td class="center"><span class="pos-badge">'+p.pos+'</span></td><td class="center" style="font-family:var(--font-display);font-weight:700;color:'+ovrColor(p.ovr)+'">'+(p.ovr>0?p.ovr:'—')+'</td>'+statCols+'</tr>';
+    }).join('')+'</tbody></table></div>'
     :'<div class="empty-state"><div class="empty-state-title">'+(r.note||'Roster Coming Soon')+'</div></div>';
   const abbr=t.name.replace('Ghost ','').slice(0,2).toUpperCase();
-  document.getElementById('roster-detail-view').innerHTML='<div class="back-btn" onclick="showTeamsList()">← All Teams</div><div class="roster-hero"><div class="roster-logo" style="background:'+t.color+'22;color:'+t.color+';">'+abbr+'</div><div><div class="roster-team-city">'+t.city+'</div><div class="roster-team-name" style="color:'+t.color+'">'+t.name+'</div><div class="roster-meta"><div class="roster-meta-item">0-0-0 &nbsp;<strong>0 PTS</strong></div><div class="roster-meta-item">'+t.conf+' Conference</div></div></div></div>'+lineGrid(r.lines,'Forward Lines',4)+lineGrid(r.dpairs,'Defensive Pairings',3)+rosterSection;
+  document.getElementById('roster-detail-view').innerHTML='<div class="back-btn" onclick="showTeamsList()">← All Teams</div><div class="roster-hero"><div class="roster-logo" style="background:'+t.color+'22;color:'+t.color+';">'+abbr+'</div><div><div class="roster-team-city">'+t.city+'</div><div class="roster-team-name" style="color:'+t.color+'">'+t.name+'</div><div class="roster-meta"><div class="roster-meta-item">'+t.w+'-'+t.l+'-'+t.otl+' &middot; '+t.pts+' PTS &middot; <span class="'+gdClass(t.gd)+'">'+gdStr(t.gd)+' GD</span></div><div class="roster-meta-item">'+t.conf+' Conference</div><div class="roster-meta-item">Team OVR: <span style="font-weight:700;color:'+ovrColor(t.ovr)+'">'+t.ovr+'</span></div></div></div></div>'+lineGrid(r.lines,'Forward Lines',4)+lineGrid(r.dpairs,'Defensive Pairings',3)+rosterSection;
   document.getElementById('rosters-teams-view').style.display='none';
   document.getElementById('roster-detail-view').style.display='block';
 }
